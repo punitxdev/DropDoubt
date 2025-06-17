@@ -1,0 +1,104 @@
+#loginPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* border: 2px solid red; */
+    padding: 20px; /* Prevents content from touching edges */
+}
+#loginObjContainer{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* width: 40%; */
+}
+#loginInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+    /* border: 2px solid blue; */
+    width: 45%;
+    max-width: 60%;
+    padding: 0px 35px;
+
+}
+
+#loginLogoHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+#loginLogoHeader img {
+    height: 100px; /* Fixed size for logo */
+    width: auto;
+}
+
+#loginLogoHeader h3 {
+    margin: 0;
+    padding: 0 10px;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+#loginImgContainer {
+    /* border: 2px solid yellow; */
+    width: 45%; /* Takes full width of parent */
+}
+
+#loginImgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers container */
+    display: block;
+}
+
+#loginObjContainer {
+    display: flex;
+    align-items: center; /* Center form inputs */
+    /* border: 2px solid green; */
+    width: 60%; 
+}
+
+.formInput{
+    display: block;
+    width: 100%; /* Takes full width of #loginObjContainer */
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid grey;
+    font-size: 15px;
+    margin: 10px 0; /* Only vertical margin */
+}
+
+.formInput:focus{
+    border:2px solid dodgerblue !important;
+    color: dodgerblue;
+    outline:none;
+}
+
+.formInput:focus::placeholder{
+    color: dodgerblue;
+}
+
+
+.formBtn{
+    background: dodgerblue;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 3px;
+    color: white;
+}
+
+.formBtn:hover{
+    background-color: rgb(17, 118, 220);
+}
+
+.formLink{
+    color: dodgerblue;
+    font-size: 15px;
+    margin: 10px;
+}

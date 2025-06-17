@@ -1,0 +1,13 @@
+#trendingQuesContainer{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    /* overflow: scroll; */
+}
+
+#trendingQuesHeading{
+    margin: 20px auto;
+    color: rgb(170, 170, 170);
+}

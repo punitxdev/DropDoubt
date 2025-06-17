@@ -1,0 +1,20 @@
+.navList{
+    list-style: none;
+    /* border: 2px solid red; */
+    display: inline;
+    padding: 5px;
+    color: white;
+    margin: 5px;
+}
+
+.navListContainer{
+    background: #232830;
+    padding: 20px;
+    margin: 0;
+    /* border: 2px solid red; */
+}
+
+.navTxt{
+        text-decoration: none;
+    color: white;
+}

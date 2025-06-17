@@ -1,0 +1,38 @@
+#footerContainer{
+    background-color: #333333;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    height:10vh;
+}
+#footerLogo{
+    padding: 0;
+    display: flex;
+    /* border:2px solid red; */
+    width: 10%;
+}
+
+#footerLogo img{
+    /* margin: auto; */
+    /* filter: grayscale(100); */
+    filter: brightness(200%);
+    /* border: 2px solid green; */
+    /* transform: scale(0.8); */
+}
+
+#footerInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid yellow; */
+    width: 80%;
+}
+
+#footerInfo h3{
+    color: white;
+}
+
+#footerOptions{
+    width: 10%;
+    /* border: 2px solid blue */
+}

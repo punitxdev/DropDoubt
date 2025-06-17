@@ -1,0 +1,48 @@
+/* Add a dim effect */
+#homeContainer::before {
+  content: "";
+  opacity: 0.5;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* adjust 0.4 to make it more/less dim */
+  z-index: 1;
+}
+
+#homeContainer{
+    background-image: url("../pics/homeWallpaper.jpg"); /* Replace with your image path */
+    background-size:cover;
+    height:100vh;
+    background-position: center;
+    
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.homeBtn{
+    padding: 15px;
+    border: 2px solid white;
+    background: none;
+    font-size: 20px;
+    width: 30%;
+    z-index: 2;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.homeBtn:hover{
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+}
+
+#homeAlign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
