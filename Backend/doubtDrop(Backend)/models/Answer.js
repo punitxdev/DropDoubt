@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const answerSchema = new mongoose.Schema({
   // Content
-  body: {
+  answer: {
     type: String,
     required: [true, 'Answer body is required'],
     maxlength: 5000

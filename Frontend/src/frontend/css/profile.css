@@ -1,0 +1,184 @@
+#profileNameContainer{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    /*border: 2px solid red;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#profileNameContainer img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+#profileName{
+    /*border: 2px solid green;*/
+    margin: 20px 50px;
+}
+
+#profileName h3{
+    color: darkgray;
+}
+
+#profileName p{
+    color: grey;
+}
+
+#statsContainer{
+    /*border: 2px solid red;*/
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+#statsContainer h2{
+    text-align: center;
+    padding-top: 10px;
+    color: darkgray;
+}
+
+#statsDisplay{
+    /*border: 2px solid green;*/
+    display: flex;
+}
+
+.displayBox{
+    /*border: 2px solid blue;*/
+    width: 25%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.displayBox h2{
+    color: black;
+}
+
+.displayBox h1{
+    color: dodgerblue;
+}
+
+#profileQuesContainer{
+    /*border: 2px solid red;*/
+    /*width: fit-content;*/
+
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    margin: auto;
+    border-radius: 10px;
+    width: 70%;
+}
+#profileQuesContainer h2{
+    color: darkgray;
+    padding: 15px;
+}
+#profileQuesDisplay{
+    /*border: 2px solid green;*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /*justify-content: center;*/
+    padding: 10px;
+    margin: 10px;
+    overflow-y: auto;
+}
+
+.displayQuesBox{
+    /* border: 2px solid blue; */
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    min-width: 25%;
+    padding: 10px;
+    border: 2px solid lightgrey;
+}
+
+.displayQuesBox h3{
+    font-size: 25px;
+    color: black;
+}
+
+.displayQuesOptions{
+    /*border: 2px solid yellow;*/
+}
+
+.displayQuesOptions button{
+    background: none;
+    outline: none;
+    /* padding: 5px; */
+    border-radius: 5px;
+    margin: 10px;
+    cursor:pointer
+}
+
+.displayQuesOptions img{
+    height: 20px;
+    width: 20px;
+}
+
+.displayQuesOptions button:hover{
+    background: dodgerblue;
+    transition: 0.3s;
+}
+
+#profileAnsContainer{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    margin: auto;
+    border-radius: 10px;
+    width: 70%;
+}
+
+#profileAnsContainer h2{
+    color: darkgray;
+    padding: 15px;
+}
+
+#profileAnsDisplay{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /*justify-content: center;*/
+    padding: 10px;
+    margin: 10px;
+    overflow-y: auto;
+}
+
+.displayAnsBox{
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 25%;
+    border: 2px solid lightgrey;
+}
+
+.displayAnsBox h3{
+    font-size: 25px;
+    color: black;
+}
+
+.displayAnsOptions button{
+    background: none;
+    outline: none;
+    /* padding: 5px; */
+    border-radius: 5px;
+    margin: 10px;
+    cursor:pointer
+}
+
+.displayAnsOptions img{
+    height: 20px;
+    width: 20px;
+}
+
+.displayAnsOptions button:hover{
+    background: dodgerblue;
+    transition: 0.3s;
+}
+
+
+

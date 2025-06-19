@@ -2,9 +2,11 @@ import {React,useState, useEffect, useRef} from 'react';
 import '../../css/post.css';
 import QuesPreview from './QuesPreview';
 import { NavLink } from 'react-router-dom';
+import Loader from './../Loader.js';
 
 export default function Post () {
   const [SearchTxt, setSearchTxt] = useState ('');
+  const [Loading, setLoading] = useState(true);
   const [QuesData, setQuesData] = useState ([]);
 
   const searchQues = () => {
@@ -20,11 +22,15 @@ export default function Post () {
         
 
         if(data === null){
+          setLoading(false)
           return setQuesData([])
         }
+        setLoading(false)
+          // console.log(`Data: ${data.upvotes}`)
         return setQuesData (data);
 
       } catch (err) {
+        setLoading(false)
         alert ('Server error');
       }
     }
@@ -56,7 +62,9 @@ export default function Post () {
         <NavLink to='/postEditor' className='formBtn round'> + Post Question </NavLink>
       </div>
 
-      <p>Total results: {QuesData.length}</p>
+      <p style={{"text-align": "center"}}>Total results: {QuesData.length}</p>
+
+      <Loader isLoading={Loading} message={'Please wait'}/>
 
       <div id="quesDisplayContainer">
         {Array.isArray(QuesData) && QuesData.length > 0 ?
@@ -65,9 +73,8 @@ export default function Post () {
             question={user.title}
             questionBody={user.body}
             questionId={user._id}
-            likes={user.upvotes.length}
+            likes={(user.upvotes).length}
             author={user.author.username}
-            answers={user.acceptedAnswers.length}
           />
         ))) : (<p>No data</p>)}
       </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../css/login.css'
-import Cookies from 'js-cookie'
 import logo from "../../pics/logo.png"
 import {NavLink, useNavigate } from 'react-router-dom';
 import loginImg from "../../pics/loginImg.png"
@@ -47,9 +46,8 @@ export default function Login() {
                 setPass('')
 
                 const userId = await response.json()
-
-                Cookies.remove('userToken')
-                Cookies.set('userToken', userId.id, {expires: 7});
+                localStorage.clear()
+                localStorage.setItem("userId", userId.id)
                 navigate('/post')
 
                 alert('Login successfully')

@@ -39,7 +39,7 @@ export default function QuesPreview (props) {
         question: Question,
         questionBody: QuestionBody,
         questionId: props.questionId,
-        author: props.author
+        author: props.author,
       }}
     >
       <div>
@@ -48,7 +48,6 @@ export default function QuesPreview (props) {
         <div className="quesPreviewInfoContainer">
           <a href="/" className="author">Author: {props.author}</a>
           <p>likes: {props.likes}</p>
-          <p>anwers: {props.answers}</p>
         </div>
         {/* <p>Time: {props.time}</p> */}
       </div>

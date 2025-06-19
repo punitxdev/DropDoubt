@@ -2,7 +2,6 @@ import React from 'react'
 import '../../css/login.css'
 import logo from "../../pics/logo.png"
 import {NavLink, useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie'
 import loginImg from "../../pics/loginImg.png"
 import {useState } from 'react'
 
@@ -52,8 +51,8 @@ export default function SignUp() {
 
                 let createAccountResponse = await response.json()
 
-                Cookies.remove('userToken')
-                Cookies.set('userTokes', createAccountResponse._id, {expires: 7})
+                localStorage.clear()
+                localStorage.setItem("userId", createAccountResponse._id)
 
                 navigate('/post')
                 

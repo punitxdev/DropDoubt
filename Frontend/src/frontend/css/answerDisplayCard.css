@@ -1,0 +1,86 @@
+.answerDisplayCard{
+    /* border: 2px solid red; */
+    margin:  40px auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.authorDisplay{
+    padding: 10px;
+    /* border: 2px solid green; */
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border-radius: 10px 10px 0px 0px;
+    background-color: dodgerblue;
+    
+}
+
+.username{
+    /* border: 2px solid blue; */
+    height: 60px;
+    color: white;
+    width: 60px;
+    border-radius: 100%;
+    /* border: 2px solid blue; */
+}
+
+.authorDisplay span{
+    font-size: 15px;
+    margin: 10px;
+    text-decoration: underline;
+    color: white;
+}
+
+.icon{
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+
+}
+
+.userProfile{
+    /* border:2px solid yellow; */
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-start;
+}
+
+.ansTimeStamp{
+    /* border:2px solid purple; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.ansBodyDisplay{
+    padding: 10px;
+    font-size: 17px;
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; /* Important to allow wrapping */
+}
+
+.ansOptions{
+    display: flex;
+    align-items: center;
+    border-top: 2px solid grey;
+    justify-content: space-around;
+    /* border:2px solid green; */
+}
+
+.ansOptions button{
+    width: 20%;
+    margin: 10px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.invert{
+    filter: invert(1);
+}

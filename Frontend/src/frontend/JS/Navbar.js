@@ -13,9 +13,11 @@ export default function Navbar() {
             <NavLink to="/post" className='navTxt'>Post</NavLink>
           </li>
           <li className="navList">
-            <NavLink to="/signUp"  className="navTxt">Account</NavLink>
+            <NavLink to="/login"  className="navTxt">Account</NavLink>
           </li>
-
+          <li className="navList">
+            <NavLink to="/profile" className="navTxt">Profile</NavLink>
+          </li>
         </ul>
     </div>
   )

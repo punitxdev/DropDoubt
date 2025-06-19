@@ -15,11 +15,26 @@ app.use(cors({origin: "http://localhost:3000"}))
 // Middleware to parse URL-encoded bodies (for form data)
 app.use(express.urlencoded({ extended: true }));
 
-// get all user data
+// get user data
+
+
 app.get('/user/getUser', async (req, res)=>{
-    const data = await User.find()
-    res.json(data)
+    try{
+        let fetchUserId = req.query
+        const userData = await User.findById(fetchUserId.userId).select('-_id')
+        const questionData = await Ques.find({author: fetchUserId.userId}).select('title upvotes downvotes')
+        const answerData = await Ans.find({author: fetchUserId.userId})
+        let finalData = {
+            user: userData,
+            questions: questionData,
+            answers: answerData,
+        }
+        res.json(finalData)
+    }catch(err){
+        res.status(500).send({message: "Server error in fetching user"})
+    }
 })
+
 
 // create user account on request  
 app.post('/user/createAccount', async (req, res) =>{
@@ -85,6 +100,7 @@ app.get('/question/getQuestion', async(req, res) =>{
     
     try{
         const data = await Ques.find().populate('author', 'username')
+        // console.log(data)
         res.status(200).json(data)
     }catch(err){
         res.status(500).send({message: "Server error in fetching question"})
@@ -124,10 +140,10 @@ app.delete('/question/deleteQuestion', async(req, res) =>{
 // ------------------------------------- answer api ---------------------------------------------------------
 
 app.post('/answer/getAnswer', async(req, res) =>{
-    console.log('fetchig answer');
+    console.log('fetching answer');
     
     try{
-        const data = await Ans.find({question: req.body.questionId})
+        const data = await Ans.find({question: req.body.questionId}).populate('author', 'username _id')
         res.status(200).json(data) 
     }catch(err){
         res.json({message: "server error"})
@@ -147,6 +163,11 @@ app.post('/answer/postAnswer', async (req, res) =>{
 
 app.delete('/answer/deleteAnswer', async(req, res)=>{
     try{
+        let deletingAns = await Ans.findById(req.body.answerId)
+        // console.log((deletingAns.author).toString())
+        if(req.body.userId !== (deletingAns.author).toString()){
+            return res.status(401).send('Unauthorized')
+        }
         const deleteAnswer = await Ans.findByIdAndDelete(req.body.answerId)
         res.status(200).send("Deleted")
     }catch(err){
@@ -169,7 +190,38 @@ app.put('/answer/updateAnswer', async (req, res)=>{
         res.status(500).send("Internal server error")
     }
 })
- 
+
+app.put('/answer/likeAnswer', async (req, res)=>{
+    try{
+        const data = await Ans.findById(req.body.answerId)
+        if((data.upvotes).includes(req.body.userId)){
+            return res.status(401).send(true)
+        }
+        await Ans.findByIdAndUpdate(req.body.answerId,
+            { $push: { upvotes: req.body.userId } }, // adds new hobby
+            { new: true }
+        );
+        res.status(200).send('liked successfully')
+    }catch(err){
+        res.status(500).send('Internal server error')
+    }
+})
+
+app.put('/answer/dislikeAnswer', async (req, res)=>{
+    try{
+        const data = await Ans.findById(req.body.answerId)
+        if((data.downvotes).includes(req.body.userId)){
+            return res.status(401).send(true)
+        }
+        await Ans.findByIdAndUpdate(req.body.answerId,
+            {$push: { downvotes: req.body.userId }},
+            {new: true}
+        );
+        res.status(200).send('disliked successfully')
+    }catch (err){
+        res.status(500).send('Internal server error')
+    }
+})
 
 // port listening on 1000
 app.listen(port, ()=>{

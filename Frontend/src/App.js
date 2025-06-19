@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Post from './frontend/JS/Post/Post';
 import PostEditor from './frontend/JS/Post/PostEditor';
 import Answers from './frontend/JS/Answers/Answers';
+import Profile from './frontend/JS/Profile/Profile';
 
     
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/postEditor" element={<PostEditor />} />
           <Route path="/answers" element={<Answers />} />
+          <Route path="/profile" element={<Profile />} />
           
           
           

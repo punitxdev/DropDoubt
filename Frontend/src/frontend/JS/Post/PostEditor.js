@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../css/postEditor.css'
-import Cookies from 'js-cookie'
 import {useState} from 'react'
 
 export default function PostEditor() {
@@ -19,10 +18,17 @@ export default function PostEditor() {
         return alert('Input field are empty')
       }
 
+      if(localStorage.getItem("userId") === null){
+        return alert('Login or SignUp to post question..')
+      }
+
+      console.log(localStorage.getItem("userId"));
+      
+
       let body = {
         title: QuesTxt,
         body: BodyTxt,
-        author:Cookies.get('userToken')
+        author:localStorage.getItem("userId")
       }
 
       console.log(body);

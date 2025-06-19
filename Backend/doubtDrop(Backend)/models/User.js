@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema({
   // Profile
   bio: {
     type: String,
-    maxlength: 500
+    maxlength: 500,
+    default: 'No bio provided'
   },
   profileImage: {
     type: String,
