@@ -1,6 +1,8 @@
-import { React, useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState, useContext } from 'react';
 import { usePopup } from '../../Contexts/PopupContext';
+import {useNavigate} from 'react-router-dom';
 import '../../css/profile.css';
+import {AuthContext} from "../../Contexts/AuthContext";
 
 export default function Profile() {
     const { showPopup } = usePopup();
@@ -9,6 +11,8 @@ export default function Profile() {
     const [Reputation, setReputation] = useState(0);
     const [UserAnswers, setUserAnswers] = useState([]);
     const [Upvotes, setUpvotes] = useState(0);
+
+    const {setUserToken} = useContext(AuthContext)
 
     const fetchUserData = async () => {
         try {
@@ -89,7 +93,14 @@ export default function Profile() {
         return '🧙 Wonder Wizard';
     };
 
+    const logout = () => {
+        setUserToken('')
+        showPopup('Logged out successfully', () => {}, { showOk: true, showCancel: false });
+        navigate('/login');
+    }
+
     const effectRan = useRef(false);
+    const navigate = useNavigate()
     useEffect(() => {
         if (!effectRan.current) {
             fetchUserData();
@@ -109,7 +120,13 @@ export default function Profile() {
                     <p>{User.email}</p>
                     <p>Level: {getTitle(Reputation)}</p>
                 </div>
+
+                {/* Logout button UI */}
+                <button className="logout-button" title="Logout" style={{"display": localStorage.getItem('userId') ? 'block' : 'none' }} onClick={logout}>
+                    Logout
+                </button>
             </div>
+
 
             <div className="profile-stats">
                 <h2>Statistics</h2>

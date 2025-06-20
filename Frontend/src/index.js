@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { PopupProvider } from './frontend/Contexts/PopupContext';
+import AuthProvider from "./frontend/Contexts/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <PopupProvider>
-    <App />
+      <AuthProvider>
+          <App />
+      </AuthProvider>
   </PopupProvider>
 );
 

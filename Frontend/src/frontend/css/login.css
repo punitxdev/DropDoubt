@@ -78,6 +78,39 @@ body {
     box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
 }
 
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px; /* match margin of input */
+}
+
+.password-input-wrapper .form-input {
+    padding-right: 60px; /* space for the toggle button */
+    margin-bottom: 0; /* reset bottom margin here */
+}
+
+.show-pass-btn {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: #007acc;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    user-select: none;
+    padding: 0 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.show-pass-btn:hover {
+    color: #005fa3;
+}
+
 .form-btn {
     padding: 12px;
     background-color: #007acc;
@@ -116,7 +149,44 @@ body {
         padding: 20px;
     }
 
+
     .login-right {
         padding: 30px 20px;
     }
+}
+
+.login-right input.form-input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.password-input-wrapper .form-input {
+    padding-right: 60px; /* keep space for button */
+}
+
+.login-right input.form-input:not(.password-input-wrapper .form-input) {
+    padding-right: 16px; /* normal inputs no extra padding */
+}
+
+.show-pass-btn-single {
+    background-color: transparent;
+    border: none;
+    color: #007acc;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    font-size: 14px;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+    align-self: flex-start; /* aligns left */
+}
+
+.show-pass-btn-single:hover {
+    color: #005fa3;
+}
+
+.show-pass-btn-single:focus {
+    outline: none;
+    text-decoration: underline;
 }

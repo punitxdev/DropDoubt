@@ -15,10 +15,10 @@ export default function PostEditor() {
   const postQuestion = async () => {
     try {
       if (QuesTxt.length === 0 || BodyTxt.length === 0) {
-        return alert('Input fields are empty');
+        return showPopup('Question and description are required', () => { }, { showOk: true, showCancel: false });
       }
       if (!localStorage.getItem("userId")) {
-        return alert('Login or SignUp to post question..');
+        return showPopup('Login or Sign up for posting the question', () => { }, { showOk: true, showCancel: false });
       }
 
       const body = {

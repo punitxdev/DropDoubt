@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import '../css/navbar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../pics/logo.png';
+import { AuthContext } from '../Contexts/AuthContext';
 
 export default function Navbar() {
+
+  const { UserToken } = useContext(AuthContext);
+
   return (
       <nav className="navbarContainer">
         <div className="navbarContent">
@@ -22,10 +26,10 @@ export default function Navbar() {
             <li className="navItem">
               <NavLink to="/post" className="navLink">Post</NavLink>
             </li>
-            <li className="navItem">
-              <NavLink to="/login" className="navLink">Account</NavLink>
+            <li className="navItem"  style={{"display": UserToken ? 'none' : 'block'}}>
+              <NavLink to="/login" className="navLink">Login</NavLink>
             </li>
-            <li className="navItem">
+            <li className="navItem" style={{"display": UserToken ? 'block' : 'none'}}>
               <NavLink to="/profile" className="navLink">Profile</NavLink>
             </li>
             <li className="navItem">
