@@ -137,6 +137,23 @@ app.delete('/question/deleteQuestion', async(req, res) =>{
 
 })
 
+app.put('/question/upvoteQuestion', async (req, res)=>{
+    try{
+        const data = await Ques.findById(req.body.questionId)
+        if((data.upvotes).includes(req.body.userId)){
+            return res.status(401).send(true)
+        }
+
+        await Ques.findByIdAndUpdate(req.body.questionId,
+            {$push: {upvotes: req.body.userId}},
+            {new: true}
+        );
+        res.status(200).send('Question upvoted successfully')
+    }catch(err){
+        res.status(500).send('Internal server error')
+    }
+})
+
 // ------------------------------------- answer api ---------------------------------------------------------
 
 app.post('/answer/getAnswer', async(req, res) =>{

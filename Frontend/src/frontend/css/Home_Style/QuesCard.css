@@ -1,72 +1,20 @@
-.quesCard{
-    font-family: cursive;
-    /* border: 2px solid blue; */   
-     border: none;
-    width: 35%;
-    margin: 20px;
-    background: none;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+.ques-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 300px;
+    transition: transform 0.2s;
 }
 
-.quesCard p{
-    font-size: 15px;
+.ques-card:hover {
+    transform: translateY(-5px);
 }
 
-.quesCard:hover{
-    transition: 0.3s;
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.tagH3{
-    margin: 5px;
-}
-
-#QuesCardStats{
-    margin: 10px 0px;
-    /* border:2px solid blue; */
+.ques-meta {
+    margin-top: 1rem;
     display: flex;
-    align-items: center;
-}
-
-#QuesCardStats p{
-    display: inline-block;
-    margin: auto 5px;
-}
-
-#QuesCardStats img{
-    display: inline;
-    height: 20px;
-    margin: auto 5px;
-}
-
-#userQuesInfo{
-    padding: 10px;
-    border-top: 2px solid rgb(166, 165, 165);
-    /* background-color: grey; */
-    /* border: 2px solid yellow; */
-    display: flex;
-    align-items: center;
-}
-
-#userQuesInfo img{
-    width: 40px;          /* Adjust size as needed */
-  height: 40px;         /* Must match width for perfect circle */
-  border-radius: 50%;   /* This creates the circle */
-  object-fit: cover;    /* Ensures images aren't stretched */
-  background: #e0e0e0;  /* Fallback color if no image */
-  display: inline-block;
-  border: 2px solid #fff; /* Optional white border */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-}
-
-#userQuesInfo a{
-    outline-style: none;
-    outline-style: none;
-    font-size:20px;
-    text-decoration: none;
-    color: blue;
-    margin: 10px;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
 }

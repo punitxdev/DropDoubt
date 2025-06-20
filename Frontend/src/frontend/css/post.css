@@ -1,30 +1,110 @@
-#quesSearchBar{
-    outline: none;
-    border: none;
-    width:40%;
-    border-radius: 50px;
-    /* display: block; */
-    padding: 15px;
-    margin: 15px 10px;
-    font-size: 16px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+/* post.css */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
 }
 
-
-#searchBarContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.post-wrapper {
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.round{
-    border-radius: 50px;
-}
-
-#quesDisplayContainer{
-    padding: 20px;
+.search-bar {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    justify-content: space-between;
     align-items: center;
+}
+
+.search-input {
+    flex: 1 1 auto;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: #007acc;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+}
+
+.form-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #007acc;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.form-btn:hover {
+    background-color: #005fa3;
+}
+
+.form-btn.secondary {
+    background-color: #6c63ff;
+}
+
+.form-btn.secondary:hover {
+    background-color: #514ac4;
+}
+
+.results-count {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.question-card {
+    background-color: #ffffff;
+    padding: 16px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease;
+}
+
+.question-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.question-card h3 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: #222;
+}
+
+.question-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+@media (max-width: 600px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-btn, .form-btn.secondary {
+        width: 100%;
+    }
 }

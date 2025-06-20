@@ -1,154 +1,104 @@
-import React from 'react'
-import '../../css/answerDisplayCard.css'
-import clock from "../../pics/clock.png"
-import like from "../../pics/like.png"
-import dislike from "../../pics/dislike.png"
-import report from "../../pics/report.png"
-import deleteIcon from "../../pics/delete.png"
-import reply from "../../pics/reply.png"
-import edit from "../../pics/edit.png"
-
+import React from 'react';
+import '../../css/answerDisplayCard.css';
+import {
+    FaClock, FaThumbsUp, FaThumbsDown, FaReply,
+    FaEdit, FaTrashAlt, FaFlag
+} from 'react-icons/fa';
+import { usePopup } from "../../Contexts/PopupContext";
 
 export default function AnswerDisplayCard(props) {
-    console.log(`this is ansId ${props.answerId}`);
-    console.log(`this is userId ${props.userId}`);
+    const { showPopup } = usePopup();
+    const isOwner = props.userId === localStorage.getItem("userId");
 
-    const isDisplay = ()=>{
-        if (props.userId === localStorage.getItem("userId")){
-            return 'block'
-        }
-        return 'none'
-    }
+    const handleDelete = async () => {
+        showPopup('Are you sure you want to delete this answer?', async () => {
+            try {
+                const res = await fetch('http://localhost:1000/answer/deleteAnswer', {
+                    method: 'DELETE',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ answerId: props.answerId, userId: props.userId })
+                });
+                if (res.status === 200) {
+                    props.fetchAnswersFunction();
+                    showPopup('Deleted successfully', () => {}, { showOk: true, showCancel: false });
+                } else {
+                    showPopup('Server error', () => {}, { showOk: true, showCancel: false });
+                }
+            } catch (err) {
+                showPopup('Network error', () => {}, { showOk: true, showCancel: false });
+            }
+        }, { showOk: true, showCancel: true });
+    };
 
-    const deleteAnswer = async ()=>{
-        const APIcall = await fetch('http://localhost:1000/answer/deleteAnswer', {
-            method: 'DELETE',
-            mode:'cors',
-            headers:{
-                'Content-Type':'application/json',
-            },
-            body: JSON.stringify({
-                answerId: props.answerId,
-                userId: props.userId
-            })
-        })
+    const likeAnswer = async () => {
+        const res = await fetch('http://localhost:1000/answer/likeAnswer', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answerId: props.answerId, userId: localStorage.getItem("userId") })
+        });
+        if (res.status === 200) props.fetchAnswersFunction();
+        else alert('Already liked or error');
+    };
 
-        let reponse = await APIcall
-        if (reponse.status === 200){
-            props.fetchAnswersFunction()
-            alert('Answer deleted successfully')
-        }else{
-            alert('Error occured')
-        }
-    }
+    const dislikeAnswer = async () => {
+        const res = await fetch('http://localhost:1000/answer/dislikeAnswer', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answerId: props.answerId, userId: localStorage.getItem("userId") })
+        });
+        if (res.status === 200) props.fetchAnswersFunction();
+        else alert('Already disliked or error');
+    };
 
-    const likeAnswer = async (likedAnswerId)=>{
-        try{
-            let data = {
-                answerId: likedAnswerId,
-                userId: localStorage.getItem("userId")
-            }
-            console.log(data)
-            const APIcall = await fetch('http://localhost:1000/answer/likeAnswer', {
-                method: 'PUT',
-                mode:'cors',
-                headers:{
-                    'Content-Type':'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            let response = await APIcall
-            if (response.status === 200) {
-                props.fetchAnswersFunction()
-                alert('Answer liked successfully')
-            }
-            else if (response.status === 401){
-                alert('You have already liked this answer')
-            }
-            else{
-                alert('Server error occured')
-            }
-        }catch (err){
-            alert('Error occured')
-        }
-    }
-
-    const dislikeAnswer = async (dislikedAnswerId)=>{
-        try{
-            let data = {
-                answerId: dislikedAnswerId,
-                userId: localStorage.getItem("userId")
-            }
-            const APIcall = await fetch('http://localhost:1000/answer/dislikeAnswer', {
-                method: 'PUT',
-                mode:'cors',
-                headers:{
-                    'Content-Type':'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            let response = await APIcall
-            if (response.status === 200) {
-                props.fetchAnswersFunction()
-                alert('Answer disliked successfully')
-            }
-            else if (response.status === 401){
-                alert('You have already disliked this answer')
-            }
-            else{
-                alert('Server error occured')
-            }
-        }catch (err){
-            alert('Error occured')
-        }
-    }
-    
-  return (
-    <div>
-        <div className='answerDisplayCard'>
-            <div className='authorDisplay'>
-               <div className="userProfile">
-                    <img src="" alt="" className="username"/>
-                    <span>{props.username}</span>
-               </div>
-                <div className="ansTimeStamp">
-                    <img src={clock} alt="timeStamp" className='icon invert'/>
-                    <span>{props.createdAt}</span>
+    return (
+        <div className="answer-card">
+            {/* Top Bar with Profile Pic, Username and Timestamp */}
+            <div className="answer-header">
+                <div className="user-info-top">
+                    <img
+                        src={props.userProfilePic || "/default-avatar.png"}
+                        alt={`${props.username}'s avatar`}
+                        className="profile-pic"
+                        onError={(e) => { e.target.onerror = null; e.target.src = "/default-avatar.png"; }}
+                    />
+                    <span className="username">{props.username}</span>
                 </div>
+
+                <span className="timestamp">
+          <FaClock className="small-icon" /> {props.createdAt}
+        </span>
             </div>
-            <div className='ansBodyDisplay'>
+
+            {/* Answer Text */}
+            <div className="answer-text">
                 <p>{props.answer}</p>
             </div>
-            <div className='ansOptions'>
-                <button className='formBtn round' onClick={() => {likeAnswer(props.answerId)}}>
-                    <img src={like} alt="" className='icon invert'/>
-                    <span>{(props.upvotes).length}</span>
-                </button>
-                <button className='formBtn round' onClick={ () => {dislikeAnswer(props.answerId)}}>
-                    <img src={dislike} alt="" className='icon invert'/>
-                    <span>{(props.downvotes).length}</span>
-                </button>
 
-                 <button className='formBtn round' style={{display: isDisplay()}}>
-                    <img src={edit} alt="" className='icon invert'/>
-                     <span>Edit</span>
-                 </button>
+            {/* Bottom Section */}
+            <div className="answer-footer">
+                {/* Vote Buttons */}
+                <div className="votes">
+                    <button className="icon-btn" onClick={likeAnswer}>
+                        <FaThumbsUp className="small-icon" /> {props.upvotes.length}
+                    </button>
+                    <button className="icon-btn" onClick={dislikeAnswer}>
+                        <FaThumbsDown className="small-icon" /> {props.downvotes.length}
+                    </button>
+                </div>
 
-                {<button className='formBtn round' style={{display: isDisplay()}} onClick={deleteAnswer}>
-                    <img src={deleteIcon} alt="" className='icon invert'/>
-                    <span>Delete</span>
-                </button>}
-
-                <button className='formBtn round'>
-                    <img src={reply} alt="" className='icon invert'/>
-                    <span>Reply</span>
-                </button>
-                <button className='formBtn round'>
-                    <img src={report} alt="" className='icon invert'/>
-                    <span>Report</span>
-                </button>
+                {/* Mini Action Widgets */}
+                <div className="widgets">
+                    {isOwner && (
+                        <>
+                            <button className="icon-btn mini"><FaEdit /></button>
+                            <button className="icon-btn mini" onClick={handleDelete}><FaTrashAlt /></button>
+                        </>
+                    )}
+                    <button className="icon-btn mini"><FaReply /></button>
+                    <button className="icon-btn mini"><FaFlag /></button>
+                </div>
             </div>
         </div>
-    </div>
-  )
+    );
 }

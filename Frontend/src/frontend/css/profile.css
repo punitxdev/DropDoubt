@@ -1,184 +1,128 @@
-#profileNameContainer{
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-    /*border: 2px solid red;*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    border-radius: 10px;
-    margin: 20px auto;
+/* profile.css */
+
+body {
+    background: #f6f8fa;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 40px auto;
     padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
 }
 
-#profileNameContainer img{
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
-}
-
-#profileName{
-    /*border: 2px solid green;*/
-    margin: 20px 50px;
-}
-
-#profileName h3{
-    color: darkgray;
-}
-
-#profileName p{
-    color: grey;
-}
-
-#statsContainer{
-    /*border: 2px solid red;*/
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-    width: 70%;
-    margin: 20px auto;
-    border-radius: 10px;
-}
-
-#statsContainer h2{
-    text-align: center;
-    padding-top: 10px;
-    color: darkgray;
-}
-
-#statsDisplay{
-    /*border: 2px solid green;*/
+.profile-header {
     display: flex;
-}
-
-.displayBox{
-    /*border: 2px solid blue;*/
-    width: 25%;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-}
-
-.displayBox h2{
-    color: black;
-}
-
-.displayBox h1{
-    color: dodgerblue;
-}
-
-#profileQuesContainer{
-    /*border: 2px solid red;*/
-    /*width: fit-content;*/
-
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-    margin: auto;
-    border-radius: 10px;
-    width: 70%;
-}
-#profileQuesContainer h2{
-    color: darkgray;
-    padding: 15px;
-}
-#profileQuesDisplay{
-    /*border: 2px solid green;*/
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    /*justify-content: center;*/
-    padding: 10px;
-    margin: 10px;
-    overflow-y: auto;
+    gap: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-.displayQuesBox{
-    /* border: 2px solid blue; */
-    margin: 10px;
+.profile-header img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.profile-info h3 {
+    font-size: 22px;
+    color: #333;
+    margin: 0;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.profile-stats h2 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-box {
+    background: #f0f4f8;
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
-    border-radius: 10px;
-    min-width: 25%;
-    padding: 10px;
-    border: 2px solid lightgrey;
 }
 
-.displayQuesBox h3{
-    font-size: 25px;
-    color: black;
+.stat-box h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #444;
 }
 
-.displayQuesOptions{
-    /*border: 2px solid yellow;*/
+.stat-box h1 {
+    font-size: 32px;
+    color: #007acc;
 }
 
-.displayQuesOptions button{
-    background: none;
-    outline: none;
-    /* padding: 5px; */
-    border-radius: 5px;
-    margin: 10px;
-    cursor:pointer
+.profile-section h2 {
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 15px;
 }
 
-.displayQuesOptions img{
-    height: 20px;
-    width: 20px;
-}
-
-.displayQuesOptions button:hover{
-    background: dodgerblue;
-    transition: 0.3s;
-}
-
-#profileAnsContainer{
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-    margin: auto;
-    border-radius: 10px;
-    width: 70%;
-}
-
-#profileAnsContainer h2{
-    color: darkgray;
-    padding: 15px;
-}
-
-#profileAnsDisplay{
+.list-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.list-item {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    /*justify-content: center;*/
-    padding: 10px;
-    margin: 10px;
-    overflow-y: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
-.displayAnsBox{
-    margin: 10px;
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    min-width: 25%;
-    border: 2px solid lightgrey;
+.list-item h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+    flex: 1;
 }
 
-.displayAnsBox h3{
-    font-size: 25px;
-    color: black;
+.item-actions {
+    display: flex;
+    gap: 12px;
 }
 
-.displayAnsOptions button{
+.item-actions button {
     background: none;
-    outline: none;
-    /* padding: 5px; */
-    border-radius: 5px;
-    margin: 10px;
-    cursor:pointer
+    border: none;
+    cursor: pointer;
+    padding: 4px;
 }
 
-.displayAnsOptions img{
-    height: 20px;
+.item-actions img {
     width: 20px;
+    height: 20px;
+    filter: grayscale(100%);
+    transition: 0.2s;
 }
 
-.displayAnsOptions button:hover{
-    background: dodgerblue;
-    transition: 0.3s;
+.item-actions img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
 }
-
-
-

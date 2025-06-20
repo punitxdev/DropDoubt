@@ -1,20 +1,59 @@
-.navList{
+.navbarContainer {
+    background-color: #ffffff;
+    padding: 12px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbarContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLogoSection {
+    display: flex;
+    align-items: center;
+}
+
+.navLogoLarge {
+    height: 70px; /* Larger logo height */
+    width: auto;
+    cursor: pointer;
+}
+
+/* Nav Items */
+.navListWrapper {
+    display: flex;
+    gap: 28px;
     list-style: none;
-    /* border: 2px solid red; */
-    display: inline;
-    padding: 5px;
-    color: white;
-    margin: 5px;
-}
-
-.navListContainer{
-    background: #232830;
-    padding: 20px;
     margin: 0;
-    /* border: 2px solid red; */
+    padding: 0;
+    align-items: center;
 }
 
-.navTxt{
-        text-decoration: none;
-    color: white;
+.navItem {
+    position: relative;
+}
+
+.navLink {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.navLink:hover {
+    background-color: #f0f0f0;
+    color: #0077ff;
+}
+
+.navLink.active {
+    color: #ffffff;
+    background-color: #0077ff;
 }

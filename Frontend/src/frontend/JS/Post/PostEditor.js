@@ -1,84 +1,74 @@
-import React from 'react'
-import '../../css/postEditor.css'
-import {useState} from 'react'
+import React, { useState } from 'react';
+import '../../css/postEditor.css';
+import { usePopup } from '../../Contexts/PopupContext';
 
 export default function PostEditor() {
+  const { showPopup } = usePopup();
   const [QuesTxt, setQuesTxt] = useState('');
-  const [BodyTxt, setBodyTxt] = useState();
+  const [BodyTxt, setBodyTxt] = useState('');
 
-  const cleanUp = ()=>{
-    setQuesTxt('')
-    setBodyTxt('')
-  }
+  const cleanUp = () => {
+    setQuesTxt('');
+    setBodyTxt('');
+  };
 
-  const postQuestion = async ()=>{
-    try{
-
-      if (QuesTxt.length === 0 || BodyTxt.length === 0){
-        return alert('Input field are empty')
+  const postQuestion = async () => {
+    try {
+      if (QuesTxt.length === 0 || BodyTxt.length === 0) {
+        return alert('Input fields are empty');
+      }
+      if (!localStorage.getItem("userId")) {
+        return alert('Login or SignUp to post question..');
       }
 
-      if(localStorage.getItem("userId") === null){
-        return alert('Login or SignUp to post question..')
-      }
-
-      console.log(localStorage.getItem("userId"));
-      
-
-      let body = {
+      const body = {
         title: QuesTxt,
         body: BodyTxt,
-        author:localStorage.getItem("userId")
-      }
-
-      console.log(body);
-      
+        author: localStorage.getItem("userId")
+      };
 
       const response = await fetch('http://localhost:1000/question/postQuestion', {
         method: 'POST',
         mode: 'cors',
-        headers:{
-          'Content-Type':'application/json',
-            },
-          body: JSON.stringify(body)
-        });
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
 
-      const data = await response
-
-      if (data.status === 200){
-        setBodyTxt('')
-        setQuesTxt('')
-        return alert('Question posted successfully')
-      }else{
-        return alert("Error Occured")
+      if (response.status === 200) {
+        cleanUp();
+        return showPopup('Question posted successfully', () => { }, { showOk: true, showCancel: false });
+      } else {
+        return showPopup('Server error occurred', () => { }, { showOk: true, showCancel: false });
       }
-
-    }catch(err){
-      console.log(err);
-      
-      alert("can't post question due to internal error")
+    } catch (err) {
+      showPopup('Frontend error occurred', () => { }, { showOk: true, showCancel: false });
     }
-  }
+  };
+
   return (
-    <div id='postMainContainer'>
-      <h1>Text editor</h1>
-        <div id='postInfoContainer'>
-
-            <div id='postInputContainer'>
-              <h1>Input Fields</h1>
-              <input type="text" placeholder='Enter your question' value={QuesTxt} onChange={e => {setQuesTxt(e.target.value)}}/>
-              <input type="text" placeholder='Enter your body' value={BodyTxt} onChange={e => {setBodyTxt(e.target.value)}}/>
-
-              <button className='formBtn' onClick={cleanUp}>Clear All</button>
-              <button className='formBtn' onClick={postQuestion}>Post question</button>
+      <div className="post-container">
+        <h1 className="post-heading">Post a Doubt</h1>
+        <div className="post-editor-wrapper">
+          <div className="post-input-section">
+            <h2>Input Fields</h2>
+            <input type="text" placeholder="Enter your question" value={QuesTxt} onChange={e => setQuesTxt(e.target.value)} />
+            <textarea placeholder="Enter your description" value={BodyTxt} onChange={e => setBodyTxt(e.target.value)}></textarea>
+            <div className="btn-group">
+              <button className="form-btn" onClick={cleanUp}>Clear All</button>
+              <button className="form-btn" onClick={postQuestion}>Post Question</button>
             </div>
-            <div id="postPreviewContainer">
-              <h1 style={{"text-align" : "center"}}>Preview</h1>
-              <h2>{QuesTxt}</h2>
-              <p>{BodyTxt}</p>
+          </div>
+
+          <div className="post-preview-section">
+            <h2>Live Preview</h2>
+            <div className="preview-box scrollable">
+              <h3>{QuesTxt || 'Your question will appear here'}</h3>
+              <p>{BodyTxt || 'Your question body/description will appear here'}</p>
             </div>
+          </div>
         </div>
-    </div>
-
-  )
+      </div>
+  );
 }

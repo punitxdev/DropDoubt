@@ -1,13 +1,30 @@
-#trendingQuesContainer{
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    /* overflow: scroll; */
+.trending-ques-section {
+    padding: 2rem;
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 1200px;
 }
 
-#trendingQuesHeading{
-    margin: 20px auto;
-    color: rgb(170, 170, 170);
+.trending-ques-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.trending-ques-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.trending-ques-subtitle {
+    color: #666;
+    font-size: 1rem;
+}
+
+.trending-ques-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
 }

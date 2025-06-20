@@ -1,0 +1,116 @@
+/* Base Container */
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main Heading */
+#mainHeading {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: #222;
+    margin-bottom: 30px;
+}
+
+/* Subheadings */
+.subHeading {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #0077ff;
+    border-left: 4px solid #0077ff;
+    padding-left: 10px;
+}
+
+/* Paragraphs */
+.description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Bold text inside description */
+.description b {
+    color: #000;
+}
+
+/* Inline code styling */
+.description code {
+    background-color: #f5f5f5;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-family: monospace;
+    color: #e63946;
+}
+
+/* List styling inside paragraphs */
+.description ul {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.description li {
+    margin-bottom: 8px;
+}
+
+/* Reputation Title Table */
+/*.!* Reputation Title Table (Light Theme Aligned) *!*/
+.titleTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.titleTable th {
+    background-color: #f5f7fa;
+    color: #444;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.titleTable td {
+    padding: 12px 16px;
+    color: #333;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.titleTable tr:last-child td {
+    border-bottom: none;
+}
+
+.titleTable tr:hover {
+    background-color: #f9fbff;
+}
+
+
+/* Footer text */
+.about-container h3 {
+    text-align: center;
+    margin-top: 60px;
+    color: #666;
+    font-weight: normal;
+}
+
+.about-container p:last-child {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 0;
+}

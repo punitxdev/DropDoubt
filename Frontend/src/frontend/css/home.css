@@ -1,48 +1,167 @@
-/* Add a dim effect */
-#homeContainer::before {
-  content: "";
-  opacity: 0.5;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* adjust 0.4 to make it more/less dim */
-  z-index: 1;
+/* Container */
+.homepage-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
 }
 
-#homeContainer{
-    background-image: url("../pics/homeWallpaper.jpg"); /* Replace with your image path */
-    background-size:cover;
-    height:100vh;
-    background-position: center;
-    
-    position: relative;
-    overflow: hidden;
+/* Hero Section */
+.simple-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #f3f4f6;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+/* Auth Buttons */
+.auth-buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-
-.homeBtn{
-    padding: 15px;
-    border: 2px solid white;
-    background: none;
-    font-size: 20px;
-    width: 30%;
-    z-index: 2;
-    color: white;
-    cursor: pointer;
-    margin: 5px;
-    border-radius: 5px;
+.auth-btn {
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.homeBtn:hover{
+.login-btn {
     background-color: white;
-    color: black;
-    transition: 0.5s;
+    border: 1.5px solid #2563eb;
+    color: #2563eb;
 }
 
-#homeAlign{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-btn:hover {
+    background-color: #e0edff;
+    transform: scale(1.02);
 }
+
+.signup-btn {
+    background-color: #2563eb;
+    color: white;
+    border: 1.5px solid #2563eb;
+}
+
+.signup-btn:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.02);
+}
+
+/* Info Section */
+.info-section.minimal {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 2.5rem;
+}
+
+.info-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-section h3 {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #374151;
+}
+
+.info-section ul {
+    padding-left: 1.25rem;
+    margin-top: 0.75rem;
+    line-height: 1.8;
+    list-style-type: disc;
+}
+
+/* Trending Section */
+.trending-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #111827;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.4rem;
+}
+
+/* How it works section */
+.how-it-works {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.step {
+    flex: 1;
+    min-width: 200px;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+/* Testimonials section */
+.testimonials-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #eef2f5;
+    border-radius: 10px;
+    text-align: center;
+}
+.testimonial-card {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 600px;
+    background: #ffffff;
+    border-left: 4px solid #00aaff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Call-to-action footer */
+.cta-footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: center;
+    background-color: #002233;
+    color: white;
+}
+.cta-button {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    background: #00aaff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.cta-button:hover {
+    background: #008ecc;
+}
+

@@ -1,43 +1,55 @@
-.quesPreviewCard{
-    /* border:2px solid red; */
-    display: inline-block;
-    margin: 18px;
-    padding: 15px;
+.quesPreviewCard {
     text-decoration: none;
-    border-radius: 10px;
-    color: black;
-    width: 40%;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    color: inherit;
 }
 
-.quesPreviewCard:hover{
-    transform: scale(1.05);
-    border: 2px solid dodgerblue;
-    transition: 0.3s;
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.quesPreviewCard h2{
-    display: inline-block;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    background-color: #fdfdfd;
 }
 
-.author{
-    color: grey;
-    text-decoration: none;
-    display: inline;
+.card-header {
+    margin-bottom: 12px;
 }
 
-.quesPreviewInfoContainer{
+.ques-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2b2b2b;
+    margin: 0;
+}
+
+.card-body {
+    margin-bottom: 16px;
+}
+
+.ques-body {
+    font-size: 1rem;
+    color: #4d4d4d;
+    line-height: 1.4;
+}
+
+.card-footer {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #707070;
 }
 
-.quesPreviewInfoContainer p{
-    display: inline;
-    margin: 10px;
+.author {
+    font-weight: 500;
 }
 
-.quesPreviewInfoContainer a{
-    display: inline;
-    margin: 10px;
+.upvotes {
+    font-weight: 500;
 }
