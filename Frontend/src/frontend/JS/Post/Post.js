@@ -15,54 +15,47 @@ export default function Post() {
     const { showPopup } = usePopup();
 
     const searchQues = (searchTxt) => {
-        console.log(searchTxt)
         setSearchTxt(searchTxt)
-        let QuesData = []
         if(SearchOption === 'title'){
-            QuesData.forEach(ques => {
-                if(ques.title.toLowerCase().includes(searchTxt.toLowerCase())){
-                    ques.display = true;
-                    QuesData.push(ques);
+            let quesData = document.getElementsByClassName('quesPreviewCard');
+            let quesTitledata = document.getElementsByClassName('ques-title');
+            for(let i = 0; i < quesTitledata.length; i++){
+                if(quesTitledata[i].innerText.toLowerCase().includes(searchTxt.toLowerCase())){
+
+                    quesData[i].style.display = 'block';
                 }
                 else{
-                    ques.display = false;
-                    QuesData.push(ques);
+                    quesData[i].style.display = 'none';
                 }
-            })
+            }
         }
-
         else if(SearchOption === 'body'){
-            QuesData.forEach(ques => {
-                if(ques.body.toLowerCase().includes(SearchTxt.toLowerCase())){
-                    ques.display = true;
-                    QuesData.push(ques);
+            let quesData = document.getElementsByClassName('quesPreviewCard');
+            let quesBodydata = document.getElementsByClassName('ques-body');
+            for(let i = 0; i < quesBodydata.length; i++){
+                if(quesBodydata[i].innerText.toLowerCase().includes(searchTxt.toLowerCase())){
+                    quesData[i].style.display = 'block';
                 }
                 else{
-                    ques.display = false;
-                    QuesData.push(ques);
+                    quesData[i].style.display = 'none';
                 }
-            })
+            }
         }
-        else if(SearchOption === 'author'){
-            QuesData.forEach(ques => {
-                if(ques.author.username.toLowerCase().includes(SearchTxt.toLowerCase())){
-                    ques.display = true;
-                    QuesData.push(ques);
-                }
-                else{
-                    ques.display = false
-                    QuesData.push(ques);
-                }
-            })
-        }
-        else {
-            QuesData.forEach(ques => {
-                ques.display = true;
-                QuesData.push(ques);
-            })
-            setQuesData(QuesData);
 
+        else if(SearchOption === 'author'){
+            let quesData = document.getElementsByClassName('quesPreviewCard');
+            let quesAuthordata = document.getElementsByClassName('author');
+            for(let i = 0; i < quesAuthordata.length; i++){
+                if(quesAuthordata[i].innerText.includes(searchTxt)){
+                    quesData[i].style.display = 'block';
+                }
+                else{
+                    quesData[i].style.display = 'none';
+                }
+            }
         }
+
+
     }
 
     const getData = async () => {
@@ -110,7 +103,7 @@ export default function Post() {
         return () => {
             effectRan.current = true;
         };
-    }, []);
+    });
 
     return (
         <div className="post-wrapper">
@@ -162,10 +155,11 @@ export default function Post() {
                             question={user.title}
                             questionBody={user.body}
                             questionId={user._id}
-                            upvotes={user.upvotes.length}
+                            upVotes={user.upvotes.length}
                             author={user.author.username}
                             display={true}
                             isVerified={user.author.isVerified}
+                            downVotes={user.downvotes.length}
 
                         />
                     ))

@@ -141,6 +141,23 @@ app.put('/user/updateBio', async (req, res)=>{
     }
 })
 
+app.get('/user/search', async (req, res)=>{
+    try {
+        const query = req.query.q;
+        if (!query || query.length < 2) return res.json([]);
+
+        const regex = new RegExp('^' + query, 'i'); // starts with
+        const users = await User.find({ username: { $regex: regex } })
+            .limit(5)
+            .select('-_id ');
+
+        res.json(users);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+})
+
 // ---------------------------------------- question Api ----------------------------------------------------
 
 // get all question data
@@ -202,6 +219,24 @@ app.put('/question/upvoteQuestion', async (req, res)=>{
         res.status(500).send('Internal server error')
     }
 })
+
+app.put('/question/downvoteQuestion', async(req, res)=>{
+   try{
+       const questionData = await Ques.findById(req.body.questionId)
+       if(questionData.downvotes.includes(req.body.userId)){
+           return res.status(401).send(true)
+       }
+       else{
+           const question = await Ques.findByIdAndUpdate(req.body.questionId, {
+               $push: {downvotes: req.body.userId}
+           }, {new: true})
+           res.status(200).send('Question downvoted successfully')
+       }
+   }catch(err){
+       res.status(500).send('Internal server error')
+   }
+})
+
 
 // ------------------------------------- answer api ---------------------------------------------------------
 

@@ -29,6 +29,8 @@ export default function Navbar() {
             </li>
             <li className="navItem">
               <NavLink to="/post" className="navLink">Post</NavLink>
+            </li><li className="navItem">
+              <NavLink to="/people" className="navLink">People</NavLink>
             </li>
             <li className="navItem" style={{ display: UserToken ? 'none' : 'block' }}>
               <NavLink to="/login" className="navLink">Login</NavLink>

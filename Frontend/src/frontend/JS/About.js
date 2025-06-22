@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/about.css';
-import logo from '../pics/logo.png';
 
 export default function About() {
     return (
@@ -69,9 +68,9 @@ export default function About() {
                 <tr><td>251 – 500</td><td>Clue Finder 🔍</td></tr>
                 <tr><td>501 – 1000</td><td>Brainy Buddy 🧠</td></tr>
                 <tr><td>1001 – 2000</td><td>Doubt Buster 💥</td></tr>
-                <tr><td>2001 – 5000</td><td>🏆 Answer Champ</td></tr>
-                <tr><td>5001 – 10000</td><td>🦸 Question Hero</td></tr>
-                <tr><td>10000+</td><td>🧙 Wonder Wizard</td></tr>
+                <tr><td>2001 – 5000</td><td>Answer Champ 🏆</td></tr>
+                <tr><td>5001 – 10000</td><td>Question Hero 🦸</td></tr>
+                <tr><td>10000+</td><td>Wonder Wizard 🧙</td></tr>
                 </tbody>
             </table>
 

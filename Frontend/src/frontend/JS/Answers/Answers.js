@@ -11,7 +11,8 @@ export default function Answers () {
   const [UserAnswer, setUserAnswer] = useState('');
   const [SortingMethod, setSortingMethod] = useState('newest')
   const location = useLocation();
-  const {question, questionBody, questionId, author, isVerified} = location.state || {};
+  const {question, questionBody, questionId, author, isVerified, upVotes, downVotes} = location.state || {}
+  const [showEditor, setShowEditor] = useState(false)
 
   const fetchAnswers = async () => {
     try {
@@ -55,6 +56,31 @@ export default function Answers () {
       return showPopup('Server error occurred', () => {}, {showOk: true, showCancel: false});
     }
   };
+
+  const downvoteQuestion = async (questionId) => {
+    try{
+      const APIcall = await fetch('http://localhost:1000/question/downvoteQuestion', {
+        method: 'PUT',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({questionId: questionId, userId: localStorage.getItem('userId')}),
+      });
+      let response = await APIcall;
+      if (response.status === 200) {
+        return showPopup('Question downvoted successfully', () => {}, {showOk: true, showCancel: false});
+      }
+      else if (response.status === 401) {
+        return showPopup('You already disliked it', () => {}, {showOk: true, showCancel: false});
+      } else {
+        return showPopup('Server error occurred', () => {}, {showOk: true, showCancel: false});
+      }
+    }catch(err){
+      console.log(err)
+      return showPopup('Server error occurred', () => {}, {showOk: true, showCancel: false});
+    }
+  }
 
   const effectRan = useRef(false);
 
@@ -120,6 +146,8 @@ export default function Answers () {
       setAnswersArr(AnswersArr.sort((a,b) => b.downvotes.length - a.downvotes.length))
     } else if (method === 'best') {
       setAnswersArr(AnswersArr.sort((a,b) => (b.upvotes.length - b.downvotes.length) -( a.upvotes.length - a.downvotes.length)))
+    }else if(method==='verifiedUsers'){
+      setAnswersArr(AnswersArr.sort((a,b) => (b.author.isVerified) - (a.author.isVerified)))
     } else if(method === 'shortest'){
       setAnswersArr(AnswersArr.sort((a,b) => a.answer.length - b.answer.length))
     } else if(method==='longest'){
@@ -160,28 +188,37 @@ export default function Answers () {
             </span>
 
             <div className="vote-buttons">
-              <button className="btn vote-btn" onClick={() => upvoteQuestion(questionId)}>⬆ Upvote</button>
-              <button className="btn vote-btn">⬇ Downvote</button>
+              <button className="btn vote-btn" onClick={() => upvoteQuestion(questionId)}>⬆ {upVotes}</button>
+              <button className="btn vote-btn" onClick={() => downvoteQuestion(questionId)}>⬇ {downVotes}</button>
             </div>
           </div>
         </div>
 
         <div className="answer-form-container">
-        <textarea
-            className="answer-textarea"
-            cols="60"
-            rows="10"
-            placeholder="Write your answer here..."
-            onChange={e => setUserAnswer(e.target.value)}
-            value={UserAnswer}
-        />
-          <p className="char-count">Characters: {UserAnswer.length}</p>
+          <button className="btn toggle-editor-btn" onClick={() => setShowEditor(prev => !prev)}>
+            {showEditor ? '✖️ Hide Editor' : '📝 Write an Answer'}
+          </button>
 
-          <div className="answer-form-buttons">
-            <button onClick={postAnswer} className="btn post-btn">Post Answer</button>
-            <button onClick={() => setUserAnswer('')} className="btn clear-btn">Clear</button>
-          </div>
+          {showEditor && (
+              <>
+      <textarea
+          className="answer-textarea"
+          cols="60"
+          rows="10"
+          placeholder="Write your answer here..."
+          onChange={e => setUserAnswer(e.target.value)}
+          value={UserAnswer}
+      />
+                <p className="char-count">Characters: {UserAnswer.length}</p>
+
+                <div className="answer-form-buttons">
+                  <button onClick={postAnswer} className="btn post-btn">Post Answer</button>
+                  <button onClick={() => setUserAnswer('')} className="btn clear-btn">Clear</button>
+                </div>
+              </>
+          )}
         </div>
+
 
         <div className="answer-sort-container">
           <label htmlFor="sortAnswers">Sort by:</label>
@@ -189,7 +226,7 @@ export default function Answers () {
             <option value="newest">🕒 Newest First</option>
             <option value="oldest">📜 Oldest First</option>
             <option value="best">🎯 Best</option>
-            <option value="verifiedUsers">🎯 Verified  Users</option>
+            <option value="verifiedUsers">🛡️ Verified  Users(Top)</option>
             <option value="upvotes">👍 Most Upvoted</option>
             <option value="downvotes">👎 Most Downvoted</option>
             <option value="shortest">📱 Shortest</option>

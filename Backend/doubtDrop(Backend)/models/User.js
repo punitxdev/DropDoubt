@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   },
   profileImage: {
     type: String,
-    default: 'default.jpg'
+    default: ''
   },
   reputation: {
     type: Number,

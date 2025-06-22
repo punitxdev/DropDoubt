@@ -37,10 +37,12 @@ export default function QuesPreview(props) {
                 questionBody: QuestionBody,
                 questionId: props.questionId,
                 author: props.author,
-                isVerified: props.isVerified
+                isVerified: props.isVerified,
+                upVotes: props.upVotes,
+                downVotes: props.downVotes,
             }}
         >
-            <div className="card" style={{"display" : props.display ? 'block' : 'none'}}>
+            <div className="card">
                 <div className="card-header">
                     <h2 className="ques-title">{Question}</h2>
                 </div>
@@ -60,7 +62,7 @@ export default function QuesPreview(props) {
                         )}
 
                     </span>
-                    <span className="upvotes">⬆️ {props.upvotes}</span>
+                    <span className="upvotes">⬆️ {props.upVotes}</span>
                 </div>
             </div>
         </NavLink>
