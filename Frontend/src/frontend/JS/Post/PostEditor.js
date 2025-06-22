@@ -53,7 +53,7 @@ export default function PostEditor() {
         <div className="post-editor-wrapper">
           <div className="post-input-section">
             <h2>Input Fields</h2>
-            <input type="text" placeholder="Enter your question" value={QuesTxt} onChange={e => setQuesTxt(e.target.value)} />
+            <input type="text" placeholder="Enter your question" value={QuesTxt} onChange={e => setQuesTxt(e.target.value)} style={{"margin-bottom": "20px"}}/>
             <textarea placeholder="Enter your description" value={BodyTxt} onChange={e => setBodyTxt(e.target.value)}></textarea>
             <div className="btn-group">
               <button className="form-btn" onClick={cleanUp}>Clear All</button>

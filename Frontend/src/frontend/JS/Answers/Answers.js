@@ -9,8 +9,9 @@ export default function Answers () {
 
   const [AnswersArr, setAnswersArr] = useState([]);
   const [UserAnswer, setUserAnswer] = useState('');
+  const [SortingMethod, setSortingMethod] = useState('newest')
   const location = useLocation();
-  const {question, questionBody, questionId, author} = location.state || {};
+  const {question, questionBody, questionId, author, isVerified} = location.state || {};
 
   const fetchAnswers = async () => {
     try {
@@ -25,6 +26,7 @@ export default function Answers () {
 
       let data = await response;
       let answersData = await data.json();
+      console.log(answersData)
       setAnswersArr(answersData);
     } catch (err) {
       console.log(err);
@@ -45,12 +47,12 @@ export default function Answers () {
 
     if (response.status === 200) {
       fetchAnswers();
-      alert('Question upvoted successfully');
+      return showPopup('Question upvoted successfully', () => {}, {showOk: true, showCancel: false});
     }
     else if (response.status === 401) {
-      alert('You liked it already');
+      return showPopup('You already liked it', () => {}, {showOk: true, showCancel: false});
     } else {
-      alert('Server error');
+      return showPopup('Server error occurred', () => {}, {showOk: true, showCancel: false});
     }
   };
 
@@ -102,6 +104,32 @@ export default function Answers () {
     return `${year}-${month}-${day}, ${hours}:${minutes}:${seconds}`;
   }
 
+  const handleSorting = (method) => {
+    console.log(method)
+    setSortingMethod(method)
+    if(AnswersArr.length === 0){
+      return
+    }
+    if (method === 'newest'){
+      setAnswersArr(AnswersArr.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)))
+    } else if (method === 'oldest') {
+      setAnswersArr(AnswersArr.sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt)))
+    }else if (method === 'upvotes') {
+      setAnswersArr(AnswersArr.sort((a,b) => b.upvotes.length - a.upvotes.length))
+    } else if (method === 'downvotes') {
+      setAnswersArr(AnswersArr.sort((a,b) => b.downvotes.length - a.downvotes.length))
+    } else if (method === 'best') {
+      setAnswersArr(AnswersArr.sort((a,b) => (b.upvotes.length - b.downvotes.length) -( a.upvotes.length - a.downvotes.length)))
+    } else if(method === 'shortest'){
+      setAnswersArr(AnswersArr.sort((a,b) => a.answer.length - b.answer.length))
+    } else if(method==='longest'){
+      setAnswersArr(AnswersArr.sort((a,b) => b.answer.length - a.answer.length))
+    } else {
+      return showPopup('Server error', () => {}, { showOk: true, showCancel: false });
+    }
+
+  }
+
   useEffect(() => {
     if (effectRan.current === false) {
       fetchAnswers();
@@ -119,7 +147,18 @@ export default function Answers () {
           <h1 className="question-title">{question}</h1>
           <p className="question-body">{questionBody}</p>
           <div className="question-meta">
-            <span className="question-author">Posted by: {author}</span>
+            <span className="question-author">
+                Posted by: {author}
+                  {isVerified && (
+                      <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
+                          alt="Verified"
+                          className="verified-badge"
+                          title="Verified User"
+                      />
+                  )}
+            </span>
+
             <div className="vote-buttons">
               <button className="btn vote-btn" onClick={() => upvoteQuestion(questionId)}>⬆ Upvote</button>
               <button className="btn vote-btn">⬇ Downvote</button>
@@ -144,6 +183,21 @@ export default function Answers () {
           </div>
         </div>
 
+        <div className="answer-sort-container">
+          <label htmlFor="sortAnswers">Sort by:</label>
+          <select id="sortAnswers" className="sort-dropdown" value={SortingMethod} onChange={e => handleSorting(e.target.value)}>
+            <option value="newest">🕒 Newest First</option>
+            <option value="oldest">📜 Oldest First</option>
+            <option value="best">🎯 Best</option>
+            <option value="verifiedUsers">🎯 Verified  Users</option>
+            <option value="upvotes">👍 Most Upvoted</option>
+            <option value="downvotes">👎 Most Downvoted</option>
+            <option value="shortest">📱 Shortest</option>
+            <option value="longest">🖥️ Longest</option>
+          </select>
+        </div>
+
+
         <div className="answers-section">
           {AnswersArr.length === 0 ? (
               <p className="no-answers-text">No answers yet. Be the first to answer!</p>
@@ -158,7 +212,9 @@ export default function Answers () {
                       answerId={data._id}
                       fetchAnswersFunction={fetchAnswers}
                       upvotes={data.upvotes}
+                      profileImage={data.author.profileImage}
                       downvotes={data.downvotes}
+                      isVerified={data.author.isVerified}
                   />
               ))
           )}

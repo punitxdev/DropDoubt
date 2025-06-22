@@ -137,3 +137,28 @@
     font-style: italic;
     color: #777;
 }
+
+.answer-sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 10px 0;
+    font-size: 15px;
+    color: #2d3748;
+}
+
+.sort-dropdown {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    font-size: 14px;
+    background-color: #fff;
+    color: #2d3748;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.sort-dropdown:hover {
+    border-color: #3182ce;
+}
+

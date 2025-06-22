@@ -75,6 +75,36 @@ export default function About() {
                 </tbody>
             </table>
 
+            <h2 className="subHeading">Verified Badge</h2>
+            <p className="description">
+                On our platform, a <b>Verified Badge</b> <img
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
+                alt="Verified"
+                style={{ width: '18px', verticalAlign: 'middle', marginLeft: '4px' }}
+            /> is a mark of authenticity.
+            </p>
+
+            <p className="description">
+                The badge is awarded to users who are either:
+                <ul style={{ marginLeft: "20px" }}>
+                    <li>🏅 Trusted contributors with consistently high-quality answers</li>
+                    <li>🎓 Educators, subject experts, or professionals in their domain</li>
+                    <li>🎯 Verified identity or affiliation with recognized institutions</li>
+                </ul>
+            </p>
+
+            <p className="description">
+                Verified users help maintain the platform's quality and reliability.
+                Their answers are often highlighted to build trust in learning communities.
+            </p>
+
+            <p className="description">
+                <b>How to get verified?</b><br />
+                You can request verification by reaching out to us via email or through our feedback form.
+                Every application is manually reviewed for quality and credibility.
+            </p>
+
+
             <h2 className="subHeading">Our Vision</h2>
             <p className="description">
                 We believe doubt-solving should be accessible, fast, and empowering.

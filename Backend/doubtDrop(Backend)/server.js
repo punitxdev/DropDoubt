@@ -4,20 +4,22 @@ const port = 1000
 const connectToDatabase = require('./db.js')
 const User = require('./models/User.js')
 const Ques = require('./models/Question.js')
+const multer = require('multer')
+const upload = multer()
 const Ans = require('./models/Answer.js')
 const cors = require('cors')
 const bcrypt = require('bcryptjs');
 
 // Middleware to parse JSON bodies
 app.use(express.json()); // Built-in in Express 4.16+
+app.use('/profilePicUploads', express.static('profilePicUploads'));
+
 app.use(cors({origin: "http://localhost:3000"}))
 
 // Middleware to parse URL-encoded bodies (for form data)
 app.use(express.urlencoded({ extended: true }));
 
 // get user data
-
-
 app.get('/user/getUser', async (req, res)=>{
     try{
         let fetchUserId = req.query
@@ -35,15 +37,51 @@ app.get('/user/getUser', async (req, res)=>{
     }
 })
 
+const path = require('path');
 
-// create user account on request  
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, 'profilePicUploads')); // ✅ use relative path
+    },
+    filename: function (req, file, cb) {
+        const ext = file.originalname.split('.').pop();
+        cb(null, file.fieldname + '-' + Date.now() + '.' + ext);
+    }
+});
+
+const uploadProfilePic = multer({ storage, limits: { fileSize: 5*1024*1024 }, })
+
+
+
+app.put('/user/uploadProfilePic',uploadProfilePic.single('profilePic'), async (req, res) =>{
+    const userId = req.body.userId
+    if(!req.file){
+        return res.status(400).send({message: "Please select a file"})
+    }
+
+    try{
+        const user = await User.findByIdAndUpdate(userId, {
+            profileImage: `/profilePicUploads/${req.file.filename}`
+
+        })
+
+        if(!user){
+            return res.status(404).send({message: "User not found"})
+        }
+        res.status(200).send({message: "Profile pic uploaded successfully"})
+    }catch(err){
+        res.status(500).send({message: "Internal server error"})
+    }
+})
+
+// create user account on request
 app.post('/user/createAccount', async (req, res) =>{
     try{
         const newUser = await User.create(req.body)
         const registerUser = await User.findOne({username: req.body.username})
         res.json(registerUser)
 
- 
+
     }catch(err){
         if (err.message.includes("duplicate key")){
              res.status(409).send({message: "account already exists"});
@@ -52,8 +90,8 @@ app.post('/user/createAccount', async (req, res) =>{
             res.status(500).send({message: 'Internal server error'})
         }
 
-    } 
-     
+    }
+
 })
 
 app.post('/user/login', async (req, res) =>{
@@ -73,7 +111,7 @@ app.post('/user/login', async (req, res) =>{
         if(!isPassCorrect){
             return res.status(401).send({message: "Invalid password"})
         }
-        
+
         res.status(200).send({message: "Login successfull", id: user._id})
     }catch(err){
         res.status(500).send({message: 'Internal server error'})
@@ -90,8 +128,19 @@ app.delete('/user/deleteAccount', async(req, res) =>{
 
         res.status(500).send("Internal server error")
     }
-})  
- 
+})
+
+app.put('/user/updateBio', async (req, res)=>{
+    try{
+        const updateBio = await User.findByIdAndUpdate(req.body.userId, {
+            bio: req.body.bio
+        })
+        res.status(200).send("Bio updated")
+    }catch (err){
+        res.status(500).send("Internal server error")
+    }
+})
+
 // ---------------------------------------- question Api ----------------------------------------------------
 
 // get all question data
@@ -99,7 +148,7 @@ app.get('/question/getQuestion', async(req, res) =>{
     console.log('fetching question');
     
     try{
-        const data = await Ques.find().populate('author', 'username')
+        const data = await Ques.find().populate('author', 'username isVerified')
         // console.log(data)
         res.status(200).json(data)
     }catch(err){
@@ -160,7 +209,7 @@ app.post('/answer/getAnswer', async(req, res) =>{
     console.log('fetching answer');
     
     try{
-        const data = await Ans.find({question: req.body.questionId}).populate('author', 'username _id')
+        const data = await Ans.find({question: req.body.questionId}).populate('author', 'username _id isVerified profileImage')
         res.status(200).json(data) 
     }catch(err){
         res.json({message: "server error"})

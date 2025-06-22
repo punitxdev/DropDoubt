@@ -1,30 +1,34 @@
+/* === Navbar Container === */
 .navbarContainer {
     background-color: #ffffff;
     padding: 12px 32px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
+/* === Content Wrapper === */
 .navbarContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
+/* === Logo Section === */
 .navLogoSection {
     display: flex;
     align-items: center;
 }
 
 .navLogoLarge {
-    height: 60px; /* Larger logo height */
+    height: 60px;
     width: auto;
     cursor: pointer;
 }
 
-/* Nav Items */
+/* === Nav Links === */
 .navListWrapper {
     display: flex;
     gap: 28px;
@@ -34,6 +38,7 @@
     align-items: center;
 }
 
+/* Individual nav items */
 .navItem {
     position: relative;
 }
@@ -56,4 +61,49 @@
 .navLink.active {
     color: #ffffff;
     background-color: #0077ff;
+}
+
+/* === Hamburger Menu Toggle === */
+.nav-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+    margin-left: auto;
+}
+
+/* === Responsive: Mobile View === */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .navListWrapper {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        background-color: #fff;
+    }
+
+    .navItem {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navLink {
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .nav-toggle:checked ~ .navListWrapper {
+        display: flex;
+    }
 }

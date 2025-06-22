@@ -53,3 +53,11 @@
 .upvotes {
     font-weight: 500;
 }
+
+.verified-badge {
+    width: 18px;
+    height: 18px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+

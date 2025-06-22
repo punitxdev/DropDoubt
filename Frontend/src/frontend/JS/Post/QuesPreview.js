@@ -37,9 +37,10 @@ export default function QuesPreview(props) {
                 questionBody: QuestionBody,
                 questionId: props.questionId,
                 author: props.author,
+                isVerified: props.isVerified
             }}
         >
-            <div className="card">
+            <div className="card" style={{"display" : props.display ? 'block' : 'none'}}>
                 <div className="card-header">
                     <h2 className="ques-title">{Question}</h2>
                 </div>
@@ -47,7 +48,18 @@ export default function QuesPreview(props) {
                     <p className="ques-body">{QuestionBody}</p>
                 </div>
                 <div className="card-footer">
-                    <span className="author">👤 {props.author}</span>
+                    <span className="author">
+                        👤 {props.author}
+                        {props.isVerified && (
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
+                                alt="Verified"
+                                className="verified-badge"
+                                title="Verified User"
+                            />
+                        )}
+
+                    </span>
                     <span className="upvotes">⬆️ {props.upvotes}</span>
                 </div>
             </div>
