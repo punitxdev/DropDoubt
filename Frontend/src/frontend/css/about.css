@@ -1,4 +1,4 @@
-/* Base Container */
+/* === Light Theme === */
 .about-container {
     max-width: 900px;
     margin: 0 auto;
@@ -8,7 +8,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Main Heading */
 #mainHeading {
     font-size: 36px;
     font-weight: bold;
@@ -17,7 +16,6 @@
     margin-bottom: 30px;
 }
 
-/* Subheadings */
 .subHeading {
     font-size: 24px;
     margin-top: 40px;
@@ -27,7 +25,6 @@
     padding-left: 10px;
 }
 
-/* Paragraphs */
 .description {
     font-size: 16px;
     line-height: 1.7;
@@ -35,12 +32,10 @@
     margin-bottom: 20px;
 }
 
-/* Bold text inside description */
 .description b {
     color: #000;
 }
 
-/* Inline code styling */
 .description code {
     background-color: #f5f5f5;
     padding: 3px 6px;
@@ -49,7 +44,6 @@
     color: #e63946;
 }
 
-/* List styling inside paragraphs */
 .description ul {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -61,7 +55,6 @@
 }
 
 /* Reputation Title Table */
-/*.!* Reputation Title Table (Light Theme Aligned) *!*/
 .titleTable {
     width: 100%;
     border-collapse: separate;
@@ -99,8 +92,6 @@
     background-color: #f9fbff;
 }
 
-
-/* Footer text */
 .about-container h3 {
     text-align: center;
     margin-top: 60px;
@@ -113,4 +104,61 @@
     font-size: 14px;
     color: #888;
     margin-bottom: 0;
+}
+
+/* === DARK MODE Overrides === */
+body.dark-mode .about-container {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+}
+
+body.dark-mode #mainHeading {
+    color: #ffffff;
+}
+
+body.dark-mode .subHeading {
+    color: #90caf9;
+    border-left-color: #90caf9;
+}
+
+body.dark-mode .description {
+    color: #d0d0d0;
+}
+
+body.dark-mode .description b {
+    color: #ffffff;
+}
+
+body.dark-mode .description code {
+    background-color: #2b2b2b;
+    color: #f78c6c;
+}
+
+body.dark-mode .titleTable {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.03);
+}
+
+body.dark-mode .titleTable th {
+    background-color: #333;
+    color: #ddd;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .titleTable td {
+    color: #ccc;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .titleTable tr:hover {
+    background-color: #3a3a3a;
+}
+
+body.dark-mode .about-container h3 {
+    color: #aaa;
+}
+
+body.dark-mode .about-container p:last-child {
+    color: #888;
 }

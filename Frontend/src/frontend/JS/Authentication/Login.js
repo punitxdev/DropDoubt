@@ -5,11 +5,13 @@ import loginImg from "../../pics/loginImg.png";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Contexts/AuthContext";
 import { usePopup } from "../../Contexts/PopupContext";
+import Loader from "../Loader";
 
 export default function Login() {
     const [Name, setName] = useState('');
     const [Email, setEmail] = useState('');
     const [Pass, setPass] = useState('');
+    const [isLoading, setIsLoading] = useState(false)
     const [showPass, setShowPass] = useState(false)
     const navigate = useNavigate();
 
@@ -17,6 +19,7 @@ export default function Login() {
     const { showPopup } = usePopup();
 
     const submitForm = async () => {
+        setIsLoading(true)
         if (Name.length !== 0 && Email.length !== 0 && Pass.length > 5) {
             let data = { username: Name, email: Email, password: Pass };
 
@@ -42,13 +45,16 @@ export default function Login() {
                 const userId = await response.json();
                 setUserToken(userId.id);
                 navigate('/post');
+                setIsLoading(false)
 
                 return showPopup('Login successful', () => {}, { showOk: true, showCancel: false });
             } catch (err) {
                 console.log(err.message);
+                setIsLoading(false)
                 return showPopup('Server error occurred', () => {}, { showOk: true, showCancel: false });
             }
         } else {
+            setIsLoading(false)
             return showPopup('Enter the details below', () => {}, { showOk: true, showCancel: false });
         }
     };
@@ -95,7 +101,7 @@ export default function Login() {
                     </div>
 
                     <NavLink to="/signUp" className="form-link">Create a new account</NavLink>
-
+                    < Loader isLoading={isLoading} height={20} width={20}/>
                     <button className="form-btn" onClick={submitForm}>Login</button>
                 </div>
             </div>

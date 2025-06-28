@@ -182,3 +182,66 @@
     margin-top: 5px;
     vertical-align: middle;
 }
+
+body.dark-mode .people-page {
+    background-color: #0d0d0d; /* true dark background */
+    color: #f1f1f1;
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode .search-heading {
+    color: #ffffff;
+}
+
+body.dark-mode .people-search-input {
+    background-color: #1a1a1a;
+    border: 1.5px solid #333;
+    color: #e5e5e5;
+}
+
+body.dark-mode .people-search-input::placeholder {
+    color: #888;
+}
+
+body.dark-mode .people-search-input:focus {
+    border-color: #3b82f6;
+}
+
+/* No results text */
+body.dark-mode .no-results {
+    color: #999;
+}
+
+/* USER CARD (Black Theme) */
+body.dark-mode .user-full-card {
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.02);
+    color: #e5e5e5;
+}
+
+body.dark-mode .username {
+    color: #ffffff;
+}
+
+body.dark-mode .user-bio {
+    color: #bbbbbb;
+}
+
+body.dark-mode .user-email {
+    color: #999999;
+}
+
+body.dark-mode .user-stats {
+    color: #cccccc;
+}
+
+/* Avatar border in dark */
+body.dark-mode .user-card-avatar {
+    border-color: #444;
+}
+
+/* Verified badge stays same or slight glow */
+body.dark-mode .verified-badge-img {
+    filter: brightness(1.2);
+}

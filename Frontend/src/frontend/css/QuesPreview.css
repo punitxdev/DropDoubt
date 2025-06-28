@@ -3,19 +3,20 @@
     color: inherit;
 }
 
+/* === Light Theme Card === */
 .card {
     background-color: #ffffff;
     border-radius: 16px;
     padding: 20px;
     margin: 16px 0;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    background-color: #fdfdfd;
+    transform: translateY(-6px);
+    background-color: #fafafa;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
@@ -23,9 +24,9 @@
 }
 
 .ques-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2b2b2b;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
     margin: 0;
 }
 
@@ -35,23 +36,19 @@
 
 .ques-body {
     font-size: 1rem;
-    color: #4d4d4d;
-    line-height: 1.4;
+    color: #444;
+    line-height: 1.6;
 }
 
 .card-footer {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
-    color: #707070;
+    color: #666;
 }
 
-.author {
-    font-weight: 500;
-}
-
-.upvotes {
-    font-weight: 500;
+.author, .upvotes {
+    font-weight: 600;
 }
 
 .verified-badge {
@@ -61,3 +58,32 @@
     vertical-align: middle;
 }
 
+/* === Dark Mode Cool UI === */
+body.dark-mode .card {
+    background-color: #1e1f24;
+    color: #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-mode .card:hover {
+    background-color: #2a2b30;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-6px);
+}
+
+body.dark-mode .ques-title {
+    color: #f3f4f6;
+}
+
+body.dark-mode .ques-body {
+    color: #cbd5e1;
+}
+
+body.dark-mode .card-footer {
+    color: #94a3b8;
+}
+
+body.dark-mode .verified-badge {
+    filter: brightness(1.3);
+}

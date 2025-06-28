@@ -24,6 +24,15 @@
     animation: popup-fade-in 0.2s ease;
 }
 
+/* === Dark Mode Support === */
+body.dark-mode .popup-card {
+    background-color: #1f2937;
+}
+
+body.dark-mode .popup-message {
+    color: #f3f4f6;
+}
+
 .popup-message {
     font-size: 1.2rem;
     color: #111827;
@@ -47,12 +56,12 @@
 }
 
 .popup-button.ok {
-    background-color: #3B82F6; /* Primary Blue */
+    background-color: #3B82F6;
     color: white;
 }
 
 .popup-button.cancel {
-    background-color: #EF4444; /* Alert Red */
+    background-color: #EF4444;
     color: white;
 }
 

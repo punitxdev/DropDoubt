@@ -1,4 +1,4 @@
-/* Container */
+/* === Light Theme === */
 .homepage-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -7,7 +7,6 @@
     color: #1f2937;
 }
 
-/* Hero Section */
 .simple-hero {
     text-align: center;
     padding: 3rem 1rem;
@@ -29,7 +28,6 @@
     margin-bottom: 1.5rem;
 }
 
-/* Auth Buttons */
 .auth-buttons {
     display: flex;
     justify-content: center;
@@ -68,7 +66,6 @@
     transform: scale(1.02);
 }
 
-/* Info Section */
 .info-section.minimal {
     background-color: #ffffff;
     padding: 2rem;
@@ -95,7 +92,6 @@
     list-style-type: disc;
 }
 
-/* Trending Section */
 .trending-section h2 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
@@ -104,19 +100,20 @@
     padding-bottom: 0.4rem;
 }
 
-/* How it works section */
 .how-it-works {
     background: #f8f9fa;
     padding: 2rem;
     border-radius: 10px;
     margin: 2rem 0;
 }
+
 .steps-container {
     display: flex;
     justify-content: space-around;
     gap: 1rem;
     flex-wrap: wrap;
 }
+
 .step {
     flex: 1;
     min-width: 200px;
@@ -127,7 +124,6 @@
     text-align: center;
 }
 
-/* Testimonials section */
 .testimonials-section {
     margin-top: 3rem;
     padding: 2rem;
@@ -135,6 +131,7 @@
     border-radius: 10px;
     text-align: center;
 }
+
 .testimonial-card {
     margin: 1rem auto;
     padding: 1rem;
@@ -144,7 +141,6 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Call-to-action footer */
 .cta-footer {
     margin-top: 4rem;
     padding: 2rem;
@@ -152,6 +148,7 @@
     background-color: #002233;
     color: white;
 }
+
 .cta-button {
     margin-top: 1rem;
     padding: 0.8rem 2rem;
@@ -161,7 +158,85 @@
     border-radius: 5px;
     text-decoration: none;
 }
+
 .cta-button:hover {
     background: #008ecc;
 }
 
+/* === DARK MODE === */
+body.dark-mode .homepage-container {
+    color: #e5e7eb;
+}
+
+body.dark-mode .simple-hero {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode .hero-subtitle {
+    color: #ccc;
+}
+
+body.dark-mode .login-btn {
+    background-color: transparent;
+    color: #90caf9;
+    border: 1.5px solid #90caf9;
+}
+
+body.dark-mode .login-btn:hover {
+    background-color: rgba(144, 202, 249, 0.1);
+}
+
+body.dark-mode .signup-btn {
+    background-color: #3b82f6;
+    border: 1.5px solid #3b82f6;
+}
+
+body.dark-mode .signup-btn:hover {
+    background-color: #2563eb;
+}
+
+body.dark-mode .info-section.minimal {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode .info-section h3 {
+    color: #aaa;
+}
+
+body.dark-mode .trending-section h2 {
+    color: #f3f4f6;
+    border-color: #444;
+}
+
+body.dark-mode .how-it-works {
+    background: #222;
+}
+
+body.dark-mode .step {
+    background: #2a2a2a;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode .testimonials-section {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .testimonial-card {
+    background-color: #2b2b2b;
+    border-left-color: #00aaff;
+}
+
+body.dark-mode .cta-footer {
+    background-color: #111827;
+}
+
+body.dark-mode .cta-button {
+    background: #00aaff;
+    color: white;
+}
+
+body.dark-mode .cta-button:hover {
+    background: #008ecc;
+}

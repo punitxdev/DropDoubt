@@ -5,12 +5,14 @@ import loginImg from "../../pics/loginImg.png";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { usePopup } from "../../Contexts/PopupContext";
 import { AuthContext } from "../../Contexts/AuthContext";
+import  Loader from "../Loader";
 
 export default function SignUp() {
     const [Name, setName] = useState('');
     const [Email, setEmail] = useState('');
     const [Pass, setPass] = useState('');
     const [Repass, setRepass] = useState('');
+    const [isLoading, setIsLoading] = useState(false)
 
     // Single toggle for both password inputs
     const [showPasswords, setShowPasswords] = useState(false);
@@ -20,8 +22,10 @@ export default function SignUp() {
     const { setUserToken } = useContext(AuthContext);
 
     const submitForm = async () => {
+        setIsLoading(true)
         if (Name.length !== 0 && Email.length !== 0 && Pass.length > 5) {
             if (Pass !== Repass) {
+                setIsLoading(false)
                 return showPopup('Passwords do not match', () => {}, { showOk: true, showCancel: false });
             }
 
@@ -44,11 +48,13 @@ export default function SignUp() {
                 let response = await createAccountQuery;
 
                 if (response.status === 500) {
+                    setIsLoading(false)
                     return showPopup('Server error occurred', () => {}, { showOk: true, showCancel: false });
                 }
 
                 if (response.status === 409) {
-                    return showPopup('Email already exists', () => {}, { showOk: true, showCancel: false });
+                    setIsLoading(false)
+                    return showPopup('Email or usename already exists', () => {}, { showOk: true, showCancel: false });
                 }
 
                 setName('');
@@ -59,13 +65,16 @@ export default function SignUp() {
                 let createAccountResponse = await response.json();
                 setUserToken(createAccountResponse._id);
                 navigate('/post');
+                setIsLoading(false)
                 return showPopup('Account created successfully', () => {}, { showOk: true, showCancel: false });
 
             } catch (err) {
                 console.log(err.message);
+                setIsLoading(false)
                 return showPopup('Server error occurred', () => {}, { showOk: true, showCancel: false });
             }
         } else {
+            setIsLoading(false)
             return showPopup('Enter the details below', () => {}, { showOk: true, showCancel: false });
         }
     };
@@ -126,6 +135,7 @@ export default function SignUp() {
                     </button>
 
                     <NavLink to="/login" className="form-link">Already have an account?</NavLink>
+                    < Loader isLoading={isLoading} height={20} width={20}/>
                     <button className="form-btn" onClick={submitForm}>Create Account</button>
                 </div>
             </div>

@@ -81,7 +81,8 @@ export default function AnswerDisplayCard(props) {
 
             <div className="answer-card-body">
                 <div className="answer-text-box">
-                    <p>{props.answer}</p>
+                    <p className="answer-content">{props.answer}</p>
+
                 </div>
             </div>
 

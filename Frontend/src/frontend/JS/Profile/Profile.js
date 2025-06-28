@@ -165,6 +165,24 @@ export default function Profile() {
         }
     }
 
+    const deleteAccount = async() => {
+
+        const APIcall = await fetch('http://localhost:1000/user/deleteAccount', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accountDeletionId: localStorage.getItem('userId') })
+        })
+
+        if (APIcall.status === 200) {
+            setUserToken('');
+            showPopup('Account deleted successfully', () => {}, { showOk: true, showCancel: false });
+            navigate('/login');
+        }
+        else{
+            showPopup('Server error', () => {}, { showOk: true, showCancel: false });
+        }
+    }
+
     // const effectRan = useRef(false);
 
     useEffect(() => {
@@ -263,8 +281,8 @@ export default function Profile() {
             {/* === QUESTIONS === */}
             <div className="profile-section">
                 <h2>Questions Posted</h2>
-                <div className="list-container">
-                    {UserAskedQuestion.length === 0 ? <p>No question posted</p> :
+                <div className="list-container scroll-container">
+                {UserAskedQuestion.length === 0 ? <p>No question posted</p> :
                         UserAskedQuestion.map(ques => (
                             <div className="list-item" key={ques._id}>
                                 <h3>{ques.title}</h3>
@@ -280,8 +298,8 @@ export default function Profile() {
             {/* === ANSWERS === */}
             <div className="profile-section">
                 <h2>Answers Given</h2>
-                <div className="list-container">
-                    {UserAnswers.length === 0 ? <p>No answer given</p> :
+                <div className="list-container scroll-container">
+                {UserAnswers.length === 0 ? <p>No answer given</p> :
                         UserAnswers.map(ans => (
                             <div className="list-item" key={ans._id}>
                                 <h3>{(ans.answer).slice(0,100)}...</h3>
@@ -292,6 +310,23 @@ export default function Profile() {
                         ))}
                 </div>
             </div>
+            {/* === DELETE ACCOUNT SECTION === */}
+            <div className="delete-account-section">
+                <h3>⚠️ Account Deletion</h3>
+                <p>
+                    Deleting your account is permanent and cannot be undone. All your questions, answers, and profile data will be lost forever.
+                </p>
+                <button className="delete-account-button"
+                        onClick={() => {
+                            showPopup('Are you absolutely sure you want to delete your account?', () => {
+                                deleteAccount();
+                            }, { showOk: true, showCancel: true });
+                        }}
+                >
+                    Delete My Account
+                </button>
+            </div>
+
         </div>
     );
 }

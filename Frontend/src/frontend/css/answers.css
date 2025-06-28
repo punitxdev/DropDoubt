@@ -1,4 +1,4 @@
-/* Page Container */
+/* === Base Container === */
 .answers-page {
     max-width: 900px;
     margin: 0 auto;
@@ -6,15 +6,17 @@
     font-family: 'Segoe UI', sans-serif;
     color: #2a2a2a;
     background-color: #f7f9fc;
+    transition: all 0.3s ease;
 }
 
-/* Question Card */
+/* === Question Card === */
 .question-card {
     background: #ffffff;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     margin-bottom: 32px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .question-title {
@@ -42,6 +44,7 @@
     font-weight: 500;
 }
 
+/* === Voting Buttons === */
 .vote-buttons {
     display: flex;
     gap: 10px;
@@ -61,7 +64,7 @@
     background-color: #dbe3f1;
 }
 
-/* Answer Input Area */
+/* === Answer Form === */
 .answer-form-container {
     background: #ffffff;
     border-radius: 12px;
@@ -77,8 +80,8 @@
     padding: 12px;
     font-size: 1rem;
     resize: vertical;
-    transition: 0.2s;
     outline: none;
+    transition: 0.2s;
 }
 
 .answer-textarea:focus {
@@ -92,7 +95,7 @@
     color: #666;
 }
 
-/* Answer Buttons */
+/* === Form Buttons === */
 .answer-form-buttons {
     display: flex;
     gap: 12px;
@@ -126,7 +129,7 @@
     background-color: #e2e8f0;
 }
 
-/* Answers Section */
+/* === Answer Section === */
 .answers-section {
     display: flex;
     flex-direction: column;
@@ -138,6 +141,7 @@
     color: #777;
 }
 
+/* === Sorting UI === */
 .answer-sort-container {
     display: flex;
     align-items: center;
@@ -177,3 +181,82 @@
     background-color: #0056b3;
 }
 
+.total-results-text {
+    font-size: 1rem;
+    color: #222;
+    margin: 1.5rem auto;
+    padding: 6px 12px;
+    text-align: center;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+/* === Dark Mode Overrides === */
+body.dark-mode .answers-page {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .question-card,
+body.dark-mode .answer-form-container {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .question-body,
+body.dark-mode .question-title,
+body.dark-mode .question-author,
+body.dark-mode .no-answers-text {
+    color: #ddd;
+}
+
+body.dark-mode .vote-btn {
+    background-color: #2c2c2c;
+    color: #ddd;
+}
+
+body.dark-mode .vote-btn:hover {
+    background-color: #3a3a3a;
+}
+
+body.dark-mode .answer-textarea {
+    background-color: #2a2a2a;
+    color: #eaeaea;
+    border: 1px solid #444;
+}
+
+body.dark-mode .answer-textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+body.dark-mode .char-count {
+    color: #999;
+}
+
+body.dark-mode .clear-btn {
+    background-color: #2c2c2c;
+    color: #eee;
+}
+
+body.dark-mode .clear-btn:hover {
+    background-color: #404040;
+}
+
+body.dark-mode .answer-sort-container{
+    background-color: #232323;
+    color: #ccc;
+    padding: 8px;
+    border-radius: 10px;
+}
+body.dark-mode .sort-dropdown,
+body.dark-mode .total-results-text {
+    background-color: #232323;
+    color: #ccc;
+}
+
+body.dark-mode .sort-dropdown {
+    border: 1px solid #444;
+}

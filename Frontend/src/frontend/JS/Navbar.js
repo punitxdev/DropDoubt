@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState} from 'react';
 import '../css/navbar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../pics/logo.png';
@@ -6,6 +6,18 @@ import { AuthContext } from '../Contexts/AuthContext';
 
 export default function Navbar() {
   const { UserToken } = useContext(AuthContext);
+  const [isDark, setIsDark] = useState(false)
+
+  const setMode = () =>{
+    if(isDark){
+      document.body.classList.remove('dark-mode');
+      setIsDark(false);
+    }else{
+      document.body.classList.add('dark-mode');
+      setIsDark(true);
+    }
+  }
+
 
   return (
       <nav className="navbarContainer">
@@ -29,7 +41,8 @@ export default function Navbar() {
             </li>
             <li className="navItem">
               <NavLink to="/post" className="navLink">Post</NavLink>
-            </li><li className="navItem">
+            </li>
+            <li className="navItem">
               <NavLink to="/people" className="navLink">People</NavLink>
             </li>
             <li className="navItem" style={{ display: UserToken ? 'none' : 'block' }}>
@@ -40,6 +53,12 @@ export default function Navbar() {
             </li>
             <li className="navItem">
               <NavLink to="/about" className="navLink">About</NavLink>
+            </li>
+            <li className="navItem darkModeItem">
+              <label className="switch">
+                <input type="checkbox" checked={isDark} onClick={setMode} />
+                <span className="slider"></span>
+              </label>
             </li>
           </ul>
         </div>

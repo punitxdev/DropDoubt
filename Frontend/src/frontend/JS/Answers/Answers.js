@@ -26,8 +26,13 @@ export default function Answers () {
       });
 
       let data = await response;
+      if (data.status !== 200) {
+        return showPopup('Server error', () => {}, { showOk: true, showCancel: false });
+      }
+
       let answersData = await data.json();
       console.log(answersData)
+
       setAnswersArr(answersData);
     } catch (err) {
       console.log(err);
@@ -194,6 +199,7 @@ export default function Answers () {
           </div>
         </div>
 
+
         <div className="answer-form-container">
           <button className="btn toggle-editor-btn" onClick={() => setShowEditor(prev => !prev)}>
             {showEditor ? '✖️ Hide Editor' : '📝 Write an Answer'}
@@ -219,6 +225,7 @@ export default function Answers () {
           )}
         </div>
 
+        <p className="total-results-text">Total results: {AnswersArr.length}</p>
 
         <div className="answer-sort-container">
           <label htmlFor="sortAnswers">Sort by:</label>

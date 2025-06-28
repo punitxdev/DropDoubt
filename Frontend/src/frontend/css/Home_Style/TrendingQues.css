@@ -1,3 +1,4 @@
+/* === Light Theme === */
 .trending-ques-section {
     padding: 2rem;
     background-color: #f5f7fa;
@@ -27,4 +28,18 @@
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+}
+
+/* === Dark Mode Overrides === */
+body.dark-mode .trending-ques-section {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+}
+
+body.dark-mode .trending-ques-title {
+    color: #ffffff;
+}
+
+body.dark-mode .trending-ques-subtitle {
+    color: #aaa;
 }

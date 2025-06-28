@@ -1,29 +1,31 @@
 .answer-card-modern {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.85);
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 16px;
-    margin: 16px 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s ease;
+    border-radius: 16px;
+    padding: 18px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(2px);
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
 
 .answer-card-modern:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
 }
 
-/* Header with user and timestamp */
+/* Header */
 .answer-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .left-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 .avatar {
@@ -36,7 +38,7 @@
 
 .username {
     font-weight: 600;
-    color: #2d3748;
+    color: #1a202c;
     font-size: 16px;
 }
 
@@ -52,18 +54,20 @@
     font-size: 13px;
 }
 
-/* Answer content */
+/* Body */
 .answer-card-body {
     margin-bottom: 16px;
 }
 
 .answer-text-box {
-    background-color: #f7fafc;
-    padding: 14px;
-    border-radius: 8px;
+    background-color: #f8fafc;
+    padding: 16px;
+    border-radius: 10px;
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #2d3748;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
 /* Footer */
@@ -72,14 +76,14 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 12px;
+    margin-top: 16px;
 }
 
 .vote-buttons,
 .action-buttons {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 .icon-btn {
@@ -91,16 +95,17 @@
     align-items: center;
     gap: 6px;
     cursor: pointer;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .icon-btn:hover {
     background-color: #edf2f7;
+    color: #2b6cb0;
 }
 
-/* Animation effect */
+/* Pop animation */
 .icon-btn.pop {
     animation: pop-animation 0.3s ease-in-out;
 }
@@ -110,7 +115,7 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.25);
+        transform: scale(1.2);
     }
     100% {
         transform: scale(1);
@@ -122,4 +127,29 @@
     height: 18px;
     margin-left: 6px;
     vertical-align: middle;
+}
+
+/* Optional: Dark Mode */
+body.dark-mode .answer-card-modern {
+    background-color: rgba(30, 30, 30, 0.85);
+    border-color: #3a3a3a;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.05);
+    color: #e4e4e4;
+}
+
+body.dark-mode .answer-text-box {
+    background-color: #292929;
+    color: #d0d0d0;
+}
+
+body.dark-mode .icon-btn {
+    color: #ccc;
+}
+
+body.dark-mode .icon-btn:hover {
+    background-color: #2d3748;
+    color: #90cdf4;
+}
+body.dark-mode .username{
+    color:#b0caff;
 }

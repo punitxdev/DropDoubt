@@ -69,8 +69,7 @@ export default function Post() {
             }
             setLoading(false);
             setQuesData(data);
-            console.log(data)
-            return handleSorting(SortingMethod);
+            handleSorting(SortingMethod);
         } catch (err) {
             setLoading(false);
             alert('Server error');
@@ -82,15 +81,19 @@ export default function Post() {
 
         if (QuesData.length === 0) return;
 
+        let sortedData = [...QuesData];
+
         if (method === 'newest') {
-            setQuesData(QuesData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+            sortedData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         } else if (method === 'oldest') {
-            setQuesData(QuesData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)));
+            sortedData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
         } else if (method === 'upvotes') {
-            setQuesData(QuesData.sort((a, b) => b.upvotes.length - a.upvotes.length));
+            sortedData.sort((a, b) => b.upvotes.length - a.upvotes.length);
         } else {
             return showPopup('Server error', () => { }, { showOk: true, showCancel: false });
         }
+
+        setQuesData(sortedData);
     };
 
     const effectRan = useRef(false);
@@ -156,9 +159,9 @@ export default function Post() {
                             questionBody={user.body}
                             questionId={user._id}
                             upVotes={user.upvotes.length}
-                            author={user.author.username}
+                            author={user.author === null ? 'Deleted User' : user.author.username}
                             display={true}
-                            isVerified={user.author.isVerified}
+                            isVerified={user.author === null ? false : user.author.isVerified}
                             downVotes={user.downvotes.length}
 
                         />

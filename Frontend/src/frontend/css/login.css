@@ -190,3 +190,68 @@ body {
     outline: none;
     text-decoration: underline;
 }
+
+/* ====== DEEP DARK MODE STYLES FOR LOGIN PAGE ====== */
+body.dark-mode {
+    background-color: #0f0f0f;
+}
+
+body.dark-mode .login-card {
+    background-color: #181818;
+}
+
+body.dark-mode .login-left {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .login-right {
+    background-color: #181818;
+}
+
+body.dark-mode .login-right h2 {
+    color: #e4e4e4;
+}
+
+body.dark-mode .form-input {
+    background-color: #242424;
+    border-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-input::placeholder {
+    color: #888;
+}
+
+body.dark-mode .form-input:focus {
+    border-color: #4f9ef9;
+    box-shadow: 0 0 0 2px rgba(79, 158, 249, 0.3);
+}
+
+body.dark-mode .show-pass-btn,
+body.dark-mode .show-pass-btn-single {
+    color: #4f9ef9;
+}
+
+body.dark-mode .show-pass-btn:hover,
+body.dark-mode .show-pass-btn-single:hover {
+    color: #82b3ff;
+}
+
+body.dark-mode .form-btn {
+    background-color: #2563eb;
+    color: white;
+}
+
+body.dark-mode .form-btn:hover {
+    background-color: #1e40af;
+}
+
+body.dark-mode .form-link {
+    color: #4f9ef9;
+}
+
+body.dark-mode .form-link:hover {
+    color: #82b3ff;
+    text-decoration: underline;
+}
+
