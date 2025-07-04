@@ -34,10 +34,11 @@ export default function About() {
             <p className="description">
                 You earn reputation points based on your activity on the platform:
                 <ul style={{ marginLeft: "20px" }}>
+                    <li>+5 points for every accepted (Best) answer you post</li>
                     <li>+4 points for each upvote your answer receives</li>
-                    <li>-1 point for each downvote</li>
                     <li>+2 points for every answer you post</li>
                     <li>+0.5 points for every question you ask</li>
+                    <li>-1 point for each downvote</li>
                 </ul>
                 The more helpful you are, the more you grow!
             </p>
@@ -45,7 +46,7 @@ export default function About() {
             <p className="description">
                 <b>Reputation Formula:</b><br />
                 <code>
-                    Reputation = (4 × upVotes) − (1 × downVotes) + (2 × noOfAnswers) + (0.5 × noOfQuestions)
+                    Reputation = (4 × upVotes) − (1 × downVotes) + (2 × noOfAnswers) + (0.5 × noOfQuestions) + (5 * isAcceptedAnswer)
                 </code>
             </p>
 
@@ -102,6 +103,20 @@ export default function About() {
                 You can request verification by reaching out to us via email or through our feedback form.
                 Every application is manually reviewed for quality and credibility.
             </p>
+
+            <h2 className="subHeading">Best Answer ✅</h2>
+            <p className="description">
+                The person who asked a doubt can mark <b>one answer</b> as the <b>Best Answer</b>.
+                This helps highlight the most accurate or helpful solution for future readers.
+            </p>
+            <p className="description">
+                <ul style={{ marginLeft: "20px" }}>
+                    <li>🏅 Only one best answer is allowed per question</li>
+                    <li>✅ Marked answers show a <b>Best Answer</b> badge</li>
+                    <li>📈 The answerer gets additional reputation of +5 points</li>
+                </ul>
+            </p>
+
 
 
             <h2 className="subHeading">Our Vision</h2>

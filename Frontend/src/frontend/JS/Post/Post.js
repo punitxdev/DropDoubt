@@ -69,6 +69,7 @@ export default function Post() {
             }
             setLoading(false);
             setQuesData(data);
+            console.log(data)
             handleSorting(SortingMethod);
         } catch (err) {
             setLoading(false);
@@ -155,6 +156,7 @@ export default function Post() {
                     QuesData.map(user => (
                         <QuesPreview
                             key={user._id}
+                            authorId={user.author === null ? "" : user.author._id}
                             question={user.title}
                             questionBody={user.body}
                             questionId={user._id}

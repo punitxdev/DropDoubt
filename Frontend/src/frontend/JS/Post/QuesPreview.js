@@ -37,6 +37,7 @@ export default function QuesPreview(props) {
                 questionBody: QuestionBody,
                 questionId: props.questionId,
                 author: props.author,
+                authorId: props.authorId,
                 isVerified: props.isVerified,
                 upVotes: props.upVotes,
                 downVotes: props.downVotes,

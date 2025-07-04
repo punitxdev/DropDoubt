@@ -90,5 +90,31 @@ router.put('/dislikeAnswer', async (req, res)=>{
     }
 })
 
+router.put('/setAsBestAnswer', async (req, res) =>{
+    try {
+        const answerId = req.body.answerId;
+
+        const selectedAnswer = await Ans.findById(answerId);
+        if (!selectedAnswer) return res.status(404).send("Answer not found");
+
+        const question = selectedAnswer.question;
+
+        await Ans.updateMany(
+            { question: question, isAccepted: true },
+            { $set: { isAccepted: false } }
+        );
+
+        await Ans.findByIdAndUpdate(answerId, {
+            $set: { isAccepted: true }
+        }, { new: true });
+
+        res.status(200).send("updated successfully");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal server error");
+    }
+
+})
+
 
 module.exports = router;

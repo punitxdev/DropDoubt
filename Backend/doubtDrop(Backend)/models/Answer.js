@@ -31,7 +31,7 @@ const answerSchema = new mongoose.Schema({
   }],
 
   // Moderation
-  isFlagged: {
+  isAccepted: {
     type: Boolean,
     default: false
   },

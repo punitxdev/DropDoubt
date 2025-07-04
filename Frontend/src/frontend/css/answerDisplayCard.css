@@ -40,8 +40,32 @@
     font-weight: 600;
     color: #1a202c;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+.verified-badge {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+/* Best Answer Badge - Updated */
+.best-answer-badge {
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* Timestamp */
 .timestamp {
     font-size: 13px;
     color: #718096;
@@ -105,6 +129,27 @@
     color: #2b6cb0;
 }
 
+/* Best Answer Button - Updated */
+.best-answer-btn {
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #93c5fd;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.best-answer-btn:hover {
+    background-color: #dbeafe;
+    border-color: #60a5fa;
+    color: #1e40af;
+}
+
 /* Pop animation */
 .icon-btn.pop {
     animation: pop-animation 0.3s ease-in-out;
@@ -122,14 +167,7 @@
     }
 }
 
-.verified-badge {
-    width: 18px;
-    height: 18px;
-    margin-left: 6px;
-    vertical-align: middle;
-}
-
-/* Optional: Dark Mode */
+/* Dark Mode */
 body.dark-mode .answer-card-modern {
     background-color: rgba(30, 30, 30, 0.85);
     border-color: #3a3a3a;
@@ -150,6 +188,24 @@ body.dark-mode .icon-btn:hover {
     background-color: #2d3748;
     color: #90cdf4;
 }
-body.dark-mode .username{
-    color:#b0caff;
+
+body.dark-mode .username {
+    color: #b0caff;
+}
+
+body.dark-mode .best-answer-badge {
+    background-color: #3b82f6;
+    color: #f0f9ff;
+}
+
+body.dark-mode .best-answer-btn {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+    border-color: #3b82f6;
+}
+
+body.dark-mode .best-answer-btn:hover {
+    background-color: #2563eb;
+    border-color: #60a5fa;
+    color: #f0f9ff;
 }

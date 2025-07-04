@@ -2,20 +2,19 @@ import React from 'react';
 import '../../css/answerDisplayCard.css';
 import {
     FaClock, FaThumbsUp, FaThumbsDown, FaReply,
-    FaEdit, FaTrashAlt, FaFlag, FaUser
+    FaEdit, FaTrashAlt, FaFlag, FaCheckCircle
 } from 'react-icons/fa';
 import { usePopup } from "../../Contexts/PopupContext";
 
 export default function AnswerDisplayCard(props) {
     const { showPopup } = usePopup();
-    const isOwner = props.userId === localStorage.getItem("userId");
+    const isOwner = props.quesAuthorId === localStorage.getItem("userId");
 
     const handleDelete = async () => {
         showPopup('Are you sure you want to delete this answer?', async () => {
             try {
                 const res = await fetch('http://localhost:1000/answer/deleteAnswer', {
                     method: 'DELETE',
-                    mode: 'cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ answerId: props.answerId, userId: props.userId })
                 });
@@ -32,7 +31,6 @@ export default function AnswerDisplayCard(props) {
     };
 
     const likeAnswer = async () => {
-
         const res = await fetch('http://localhost:1000/answer/likeAnswer', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -52,8 +50,29 @@ export default function AnswerDisplayCard(props) {
         else return showPopup('Already disliked or error', () => {}, { showOk: true, showCancel: false });
     };
 
+    const setAsBestAnswer = async (answerId) => {
+        if (localStorage.getItem("userId") !== props.quesAuthorId) {
+            return showPopup("You can't mark this answer as best answer", () => {}, { showOk: true, showCancel: false });
+        }
+
+        const res = await fetch('http://localhost:1000/answer/setAsBestAnswer', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answerId: answerId }),
+        });
+
+        if (res.status === 200) {
+            props.fetchAnswersFunction();
+            return showPopup('Answer marked as best answer successfully', () => {}, { showOk: true, showCancel: false });
+        } else if (res.status === 401) {
+            return showPopup('You already marked this answer as best answer', () => {}, { showOk: true, showCancel: false });
+        } else {
+            return showPopup('Server error occurred', () => {}, { showOk: true, showCancel: false });
+        }
+    };
+
     return (
-        <div className="answer-card-modern">
+        <div className="answer-card-modern" id={`answer-${props.answerId}`}>
             <div className="answer-card-header">
                 <div className="left-header">
                     <img
@@ -63,7 +82,7 @@ export default function AnswerDisplayCard(props) {
                         onError={(e) => { e.target.onerror = null; e.target.src = "/default-avatar.png"; }}
                     />
                     <span className="username">
-                        {props.username}
+            {props.username}
                         {props.isVerified && (
                             <img
                                 src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
@@ -72,7 +91,12 @@ export default function AnswerDisplayCard(props) {
                                 title="Verified User"
                             />
                         )}
-                    </span>
+                        {props.isAccepted && (
+                            <span className="best-answer-badge">
+                <FaCheckCircle /> Best Answer
+              </span>
+                        )}
+          </span>
                 </div>
                 <div className="timestamp">
                     <FaClock className="clock-icon" /> {props.createdAt}
@@ -82,7 +106,6 @@ export default function AnswerDisplayCard(props) {
             <div className="answer-card-body">
                 <div className="answer-text-box">
                     <p className="answer-content">{props.answer}</p>
-
                 </div>
             </div>
 
@@ -101,6 +124,12 @@ export default function AnswerDisplayCard(props) {
                     )}
                     <button className="icon-btn"><FaReply /></button>
                     <button className="icon-btn"><FaFlag /></button>
+
+                    {isOwner && !props.isAccepted && (
+                        <button className="icon-btn best-answer-btn" onClick={() => setAsBestAnswer(props.answerId)}>
+                            ✅ Mark as Best Answer
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
