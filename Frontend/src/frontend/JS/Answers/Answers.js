@@ -37,6 +37,7 @@ export default function Answers() {
 
   useEffect(() => {
     fetchAnswers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export default function Answers() {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 300); // delay to ensure DOM rendered
     }
-  }, [AnswersArr]);
+  }, [AnswersArr, hash]);
 
   const postAnswer = async () => {
     if (UserAnswer.trim().length < 21 || UserAnswer.trim().length > 5000) {
