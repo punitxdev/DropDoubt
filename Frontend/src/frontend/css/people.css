@@ -1,63 +1,60 @@
 /* ═══════ PEOPLE DIRECTORY ═══════ */
 .people-page {
-  max-width: 1000px; margin: 3rem auto; padding: 3rem;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-xl); box-shadow: var(--shadow-md);
+  max-width: 1040px; margin: 3rem auto; padding: 0 1.5rem;
   animation: fadeIn 0.5s ease-out;
 }
 
 .search-heading {
-  font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 2rem;
+  font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em;
+  margin-bottom: 3rem; color: var(--text-primary);
 }
 
 .people-search-input {
-  width: 100%; padding: 1.1rem 1.5rem;
-  border: 2px solid var(--border); border-radius: var(--radius-sm);
-  font-size: 1.05rem; background: var(--bg);
-  color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: all 0.25s;
+  width: 100%; padding: 1rem 1.25rem;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 1rem; background: var(--bg); color: var(--text-primary);
+  transition: border-color 0.2s;
 }
-.people-search-input:focus {
-  outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-glow);
-}
+.people-search-input:focus { outline: none; border-color: var(--text-primary); }
 
-.people-results { margin-top: 2.5rem; }
-.no-results { text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-top: 1rem; }
+.people-results { margin-top: 3rem; }
+.no-results { color: var(--text-secondary); font-size: 1rem; text-align: center; }
 
-.card-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+.card-grid { display: flex; flex-direction: column; gap: 1rem; }
 
 .user-full-card {
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 1.5rem;
   display: flex; align-items: center; gap: 1.5rem;
-  transition: all 0.3s;
+  padding: 1.5rem; border: 1px solid var(--border);
+  border-radius: var(--radius-md); background: var(--surface);
+  transition: border-color 0.2s;
 }
-.user-full-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+.user-full-card:hover { border-color: var(--border-hover); }
 
 .user-card-avatar {
-  width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
-  border: 3px solid var(--accent); flex-shrink: 0;
+  width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--border);
 }
 
 .user-card-details { flex: 1; }
 
 .username {
-  font-size: 1.4rem; font-weight: 700; color: var(--text-primary);
-  margin: 0 0 0.3rem; display: flex; align-items: center; gap: 0.4rem;
+  font-size: 1.25rem; font-weight: 600; color: var(--text-primary);
+  margin: 0 0 0.25rem; display: flex; align-items: center; gap: 0.5rem;
+  letter-spacing: -0.01em;
 }
 
-.verified-badge-img { height: 20px; vertical-align: middle; }
+.verified-badge-img { height: 16px; filter: grayscale(1); }
+body.dark-mode .verified-badge-img { filter: invert(1); }
 
-.user-bio { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; }
-.user-email { font-size: 0.9rem; color: var(--accent); margin-top: 0.4rem; font-weight: 500; }
+.user-bio { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+.user-email { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
 
 .user-stats {
-  display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 0.75rem;
-  border-top: 1px solid var(--border); font-weight: 600;
-  color: var(--text-secondary); font-size: 0.9rem;
+  display: flex; gap: 1.5rem; margin-top: 1rem;
+  font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .user-full-card { flex-direction: column; text-align: center; }
   .user-stats { justify-content: center; }
 }

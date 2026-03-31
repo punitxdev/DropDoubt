@@ -1,27 +1,27 @@
 /* ═══════ FOOTER ═══════ */
 #footerContainer {
-  background: var(--surface);
+  background: var(--bg);
   border-top: 1px solid var(--border);
-  padding: 1.5rem 2rem;
+  padding: 3rem 1.5rem;
 }
 
 .footerContent {
   display: flex; justify-content: space-between; align-items: center;
-  max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
+  max-width: 1040px; margin: 0 auto; flex-wrap: wrap; gap: 2rem;
 }
 
-.footerLogoImg { height: 44px; opacity: 0.7; transition: opacity 0.3s; }
+.footerLogoImg { height: 20px; filter: grayscale(1); opacity: 0.5; transition: opacity 0.2s; }
+body.dark-mode .footerLogoImg { filter: invert(1) grayscale(1); opacity: 0.6; }
 .footerLogoImg:hover { opacity: 1; }
 
 .footerInfo {
   text-align: center; flex: 1;
-  font-size: 0.9rem; color: var(--text-muted);
+  font-size: 0.85rem; color: var(--text-muted);
 }
 
-.footerIcons { display: flex; gap: 1rem; }
+.footerIcons { display: flex; gap: 1.5rem; }
 .footerIcons a {
   color: var(--text-muted); font-size: 1.1rem;
-  transition: all 0.25s; padding: 0.5rem;
-  border-radius: var(--radius-sm);
+  transition: color 0.2s; display: flex; align-items: center;
 }
-.footerIcons a:hover { color: var(--accent); background: rgba(99,102,241,0.08); }
+.footerIcons a:hover { color: var(--text-primary); }

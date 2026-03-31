@@ -1,87 +1,79 @@
 /* ═══════ ANSWERS PAGE ═══════ */
 .answers-page {
-  max-width: 900px; margin: 2rem auto; padding: 0 1rem;
-  animation: fadeIn 0.5s ease-out;
+  max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .question-card {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 2.5rem; border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm); margin-bottom: 2rem;
-  border-top: 4px solid var(--accent);
+  margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);
 }
 
 .question-title {
-  font-size: 2.2rem; color: var(--text-primary); margin: 0 0 1rem; line-height: 1.2;
+  font-size: 2.25rem; font-weight: 800; color: var(--text-primary);
+  margin: 0 0 1rem; line-height: 1.2; letter-spacing: -0.04em;
 }
-.question-body { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; }
+.question-body { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; white-space: pre-wrap; }
 
 .question-meta {
   display: flex; justify-content: space-between; align-items: center;
-  border-top: 1px solid var(--border); padding-top: 1rem;
 }
-.question-author { font-weight: 600; color: var(--accent); display: flex; align-items: center; }
+.question-author { font-weight: 500; color: var(--text-secondary); font-size: 0.95rem; }
 
-.vote-buttons { display: flex; gap: 0.75rem; }
+.vote-buttons { display: flex; gap: 0.5rem; }
 .vote-btn {
-  background: var(--bg); border: 2px solid var(--border);
-  padding: 0.5rem 1rem; border-radius: var(--radius-sm);
-  cursor: pointer; font-weight: 700; color: var(--text-primary);
-  transition: all 0.2s;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem; border-radius: var(--radius-sm);
+  cursor: pointer; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary);
+  transition: all 0.2s; box-shadow: var(--shadow-sm);
 }
-.vote-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.vote-btn:hover { border-color: var(--text-primary); color: var(--text-primary); }
 
 /* Editor */
-.answer-form-container {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem;
-}
+.answer-form-container { margin-bottom: 3rem; }
 
 .toggle-editor-btn {
-  width: 100%; background: transparent; border: 2px dashed var(--accent);
-  color: var(--accent); padding: 1rem; border-radius: var(--radius-sm);
-  font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: all 0.25s;
+  width: 100%; background: var(--bg); border: 1px dashed var(--border-hover);
+  color: var(--text-secondary); padding: 1rem; border-radius: var(--radius-sm);
+  font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
 }
-.toggle-editor-btn:hover { background: rgba(99,102,241,0.06); }
+.toggle-editor-btn:hover { border-color: var(--text-primary); color: var(--text-primary); }
 
 .answer-textarea {
-  width: 100%; min-height: 140px; padding: 1rem; margin-top: 1rem;
-  border: 2px solid var(--border); border-radius: var(--radius-sm);
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem;
-  color: var(--text-primary); background: var(--bg); resize: vertical;
+  width: 100%; min-height: 140px; padding: 1rem;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface);
+  font-size: 1rem; color: var(--text-primary); resize: vertical; box-shadow: var(--shadow-sm);
 }
-.answer-textarea:focus { outline: none; border-color: var(--accent); }
+.answer-textarea:focus { outline: none; border-color: var(--text-primary); }
 
-.char-count { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
+.char-count { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
 
-.answer-form-buttons { display: flex; gap: 0.75rem; margin-top: 1rem; }
+.answer-form-buttons { display: flex; gap: 0.75rem; margin-top: 1rem; justify-content: flex-end; }
 
 .post-btn {
-  background: var(--accent); color: white; border: none;
-  padding: 0.8rem 2rem; border-radius: var(--radius-sm);
-  cursor: pointer; font-weight: 700; transition: all 0.25s;
+  background: var(--accent); color: var(--accent-text); border: none;
+  padding: 0.6rem 1.5rem; border-radius: var(--radius-sm);
+  cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;
 }
-.post-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+.post-btn:hover { background: var(--accent-hover); }
 
 .clear-btn {
-  background: var(--rose); color: white; border: none;
-  padding: 0.8rem 2rem; border-radius: var(--radius-sm);
-  cursor: pointer; font-weight: 700; transition: all 0.25s;
+  background: var(--bg); color: var(--text-secondary); border: 1px solid var(--border);
+  padding: 0.6rem 1.5rem; border-radius: var(--radius-sm);
+  cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: all 0.2s;
 }
-.clear-btn:hover { background: #E11D48; transform: translateY(-2px); }
+.clear-btn:hover { border-color: var(--danger); color: var(--danger); }
 
-.total-results-text { font-weight: 600; margin-bottom: 1rem; color: var(--text-secondary); }
+.total-results-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-primary); letter-spacing: -0.02em; }
 
 .answer-sort-container {
-  display: flex; justify-content: flex-end; align-items: center;
-  gap: 0.75rem; margin-bottom: 2rem;
+  display: flex; justify-content: flex-end; margin-bottom: 1.5rem;
 }
 .sort-dropdown {
-  padding: 0.5rem 1rem; border-radius: var(--radius-sm);
-  border: 2px solid var(--border); background: var(--surface);
-  color: var(--text-primary); font-family: inherit;
+  padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.85rem;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-primary); cursor: pointer;
 }
 
 .answers-section { display: flex; flex-direction: column; gap: 1.5rem; }
 
-.no-answers-text { text-align: center; color: var(--text-muted); font-size: 1.1rem; padding: 3rem 0; }
+.no-answers-text { text-align: center; color: var(--text-muted); font-size: 1rem; padding: 2rem 0; border: 1px dashed var(--border); border-radius: var(--radius-md); }

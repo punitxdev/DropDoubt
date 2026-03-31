@@ -1,61 +1,60 @@
 /* ═══════ POST FEED ═══════ */
 .post-wrapper {
-  padding: 2rem 1rem; max-width: 1000px; margin: 0 auto;
-  animation: fadeIn 0.5s ease-out;
+  padding: 3rem 1.5rem; max-width: 1040px; margin: 0 auto;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .search-bar-wrapper {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 1.25rem; border-radius: var(--radius-lg);
-  margin-bottom: 2rem; box-shadow: var(--shadow-sm);
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 2.5rem; display: flex; justify-content: space-between;
+  align-items: center; gap: 1rem; flex-wrap: wrap;
 }
 
 .search-bar-classic {
   display: flex; flex: 1; min-width: 280px;
-  background: var(--bg); border: 2px solid var(--border);
-  border-radius: var(--radius-sm); overflow: hidden; height: 48px;
-  transition: border-color 0.25s;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); overflow: hidden; height: 44px;
+  transition: border-color 0.2s; box-shadow: var(--shadow-sm);
 }
-.search-bar-classic:focus-within { border-color: var(--accent); }
+.search-bar-classic:focus-within { border-color: var(--text-primary); }
 
 .search-field {
   flex: 1; padding: 0 1rem; border: none; background: transparent;
-  font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-primary); outline: none;
+  color: var(--text-primary); outline: none; font-size: 0.95rem;
 }
 
 .search-dropdown {
-  padding: 0 1rem; border: none; border-right: 2px solid var(--border);
-  background: transparent; color: var(--text-secondary); cursor: pointer; font-weight: 500;
+  padding: 0 1rem; border: none; border-right: 1px solid var(--border);
+  background: transparent; color: var(--text-secondary); cursor: pointer; font-size: 0.9rem;
 }
 
 .search-classic-btn {
-  padding: 0 1.5rem; border: none; background: var(--accent); color: white;
-  cursor: pointer; font-weight: 700; transition: background 0.2s;
+  padding: 0 1.5rem; border: none; background: var(--bg); color: var(--text-primary);
+  cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: background 0.2s;
+  border-left: 1px solid var(--border);
 }
-.search-classic-btn:hover { background: var(--accent-hover); }
+.search-classic-btn:hover { background: var(--surface-hover); }
 
 .classic-ask-btn {
-  background: var(--accent); color: white;
-  padding: 0.8rem 1.8rem; border-radius: 50px;
-  font-weight: 700; white-space: nowrap;
-  transition: all 0.3s; box-shadow: var(--shadow-accent);
+  background: var(--accent); color: var(--accent-text);
+  padding: 0.75rem 1.5rem; border-radius: var(--radius-sm);
+  font-weight: 500; font-size: 0.95rem; white-space: nowrap;
+  transition: all 0.2s; box-shadow: var(--shadow-sm);
 }
-.classic-ask-btn:hover { transform: translateY(-2px); background: var(--accent-hover); }
+.classic-ask-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); background: var(--accent-hover); }
 
 .results-bar {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
 }
-.results-count { font-weight: 600; color: var(--text-primary); }
+
+.results-count { font-weight: 500; color: var(--text-secondary); font-size: 0.95rem; }
 
 .sort-ui-container { display: flex; align-items: center; gap: 0.5rem; }
-.sort-ui-label { color: var(--text-muted); font-size: 0.9rem; }
+.sort-ui-label { color: var(--text-muted); font-size: 0.85rem; }
 .sort-ui-dropdown {
-  padding: 0.5rem 1rem; border-radius: var(--radius-sm);
-  border: 2px solid var(--border); background: var(--surface);
-  color: var(--text-primary); font-family: inherit;
+  padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.85rem;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-primary); cursor: pointer;
 }
 
-.question-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.question-list { display: flex; flex-direction: column; gap: 1rem; }

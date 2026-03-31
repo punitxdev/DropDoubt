@@ -1,84 +1,78 @@
 /* ═══════ NAVBAR ═══════ */
 .navbarContainer {
-  background: var(--surface);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
+  z-index: 999;
 }
 
 .navbarContent {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1040px;
   margin: 0 auto;
-  height: 64px;
+  height: 60px;
+  padding: 0 1.5rem;
 }
 
 .navLogoLarge {
-  height: 44px;
-  transition: transform 0.3s;
+  height: 24px;
+  /* Making logo blend smoothly */
+  filter: contrast(1.2);
 }
-.navLogoLarge:hover { transform: scale(1.06) rotate(-1deg); }
+body.dark-mode .navLogoLarge { filter: invert(1); }
 
 .navListWrapper {
   display: flex;
-  gap: 0.5rem;
+  gap: 1.5rem;
   list-style: none;
   align-items: center;
 }
 
 .navLink {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.25s ease;
+  transition: color 0.2s;
   position: relative;
 }
 
 .navLink:hover {
-  color: var(--accent);
-  background: rgba(99, 102, 241, 0.08);
+  color: var(--text-primary);
 }
 
 .navLink.active {
-  color: #fff;
-  background: var(--accent);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
-/* Toggle Switch */
-.switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+/* Toggle Switch (Vercel style button) */
+.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
 .switch input { opacity: 0; width: 0; height: 0; }
 .slider {
   position: absolute; cursor: pointer; inset: 0;
-  background: #CBD5E1; border-radius: 24px; transition: 0.3s;
+  background: var(--border); border-radius: 20px; transition: 0.2s;
 }
-body.dark-mode .slider { background: #334155; }
 .slider::before {
-  content: ""; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px;
-  background: white; border-radius: 50%; transition: 0.3s;
+  content: ""; position: absolute; height: 16px; width: 16px; left: 2px; bottom: 2px;
+  background: var(--bg); border-radius: 50%; border: 1px solid var(--border); transition: 0.2s;
 }
 .switch input:checked + .slider { background: var(--accent); }
-.switch input:checked + .slider::before { transform: translateX(20px); }
+.switch input:checked + .slider::before { transform: translateX(20px); border-color: var(--accent); }
 
-/* Hamburger */
+/* Mobile Menu */
 .nav-toggle { display: none; }
-.hamburger { display: none; font-size: 26px; cursor: pointer; color: var(--text-primary); }
+.hamburger { display: none; font-size: 24px; cursor: pointer; color: var(--text-primary); }
 
 @media (max-width: 768px) {
   .hamburger { display: block; }
   .navListWrapper {
     display: none; flex-direction: column; width: 100%;
-    position: absolute; top: 64px; left: 0; padding: 1rem;
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-md);
+    position: absolute; top: 60px; left: 0; padding: 1.5rem;
+    background: var(--bg); border-bottom: 1px solid var(--border);
   }
-  .nav-toggle:checked ~ .navListWrapper { display: flex; }
-  .navLink { width: 100%; text-align: center; padding: 0.75rem; }
+  .nav-toggle:checked ~ .navListWrapper { display: flex; gap: 1rem; }
+  .navLink { width: 100%; text-align: left; padding: 0.5rem 0; font-size: 1rem; border-bottom: 1px solid var(--border); }
 }
