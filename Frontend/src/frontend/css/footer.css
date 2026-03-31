@@ -1,42 +1,27 @@
+/* ═══════ FOOTER ═══════ */
 #footerContainer {
-    background-color: #111;
-    padding: 24px 40px;
-    color: #ccc;
-    border-top: 1px solid #222;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
 }
 
 .footerContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
 }
 
-.footerLogoImg {
-    height: 60px;
-    width: auto;
-}
+.footerLogoImg { height: 44px; opacity: 0.7; transition: opacity 0.3s; }
+.footerLogoImg:hover { opacity: 1; }
 
 .footerInfo {
-    text-align: center;
-    flex: 1;
-    font-size: 14px;
-    color: #aaa;
+  text-align: center; flex: 1;
+  font-size: 0.9rem; color: var(--text-muted);
 }
 
-.footerIcons {
-    display: flex;
-    gap: 16px;
-}
-
+.footerIcons { display: flex; gap: 1rem; }
 .footerIcons a {
-    color: #aaa;
-    font-size: 18px;
-    transition: color 0.3s ease;
+  color: var(--text-muted); font-size: 1.1rem;
+  transition: all 0.25s; padding: 0.5rem;
+  border-radius: var(--radius-sm);
 }
-
-.footerIcons a:hover {
-    color: #ffffff;
-}
+.footerIcons a:hover { color: var(--accent); background: rgba(99,102,241,0.08); }
