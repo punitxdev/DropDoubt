@@ -1,170 +1,97 @@
-/* postEditor.css */
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f5f7fa;
-    margin: 0;
-    padding: 0;
+.post-container {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 3rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.5s ease-out;
 }
 
-.post-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+body.dark-mode .post-container {
+    background: var(--glass-bg-dark);
+    border-color: var(--glass-border-dark);
 }
 
 .post-heading {
     text-align: center;
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary);
 }
 
 .post-editor-wrapper {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    gap: 2rem;
     flex-wrap: wrap;
 }
 
-.post-input-section,
-.post-preview-section {
+.post-input-section, .post-preview-section {
     flex: 1;
     min-width: 300px;
+    background: rgba(255,255,255,0.5);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
 }
 
-.post-input-section h2,
-.post-preview-section h2 {
-    font-size: 20px;
-    color: #007acc;
-    margin-bottom: 15px;
+body.dark-mode .post-input-section, body.dark-mode .post-preview-section {
+    background: rgba(31, 41, 55, 0.4);
+    border-color: var(--glass-border-dark);
 }
 
-input[type="text"],
-textarea {
+.post-input-section h2, .post-preview-section h2 { margin-top: 0; color: var(--text-light); }
+body.dark-mode .post-input-section h2, body.dark-mode .post-preview-section h2 { color: var(--text-dark); }
+
+input[type="text"], textarea {
     width: 100%;
-    padding: 12px;
-    /*margin-bottom: 20px;*/
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.9);
+    transition: all 0.3s;
     resize: vertical;
 }
 
-textarea {
-    height: 120px;
+body.dark-mode input[type="text"], body.dark-mode textarea {
+    background: #1F2937; border-color: #374151; color: var(--text-dark);
 }
 
-.btn-group {
-    display: flex;
-    gap: 10px;
+input[type="text"]:focus, textarea:focus {
+    outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
 }
+
+.btn-group { display: flex; gap: 1rem; }
 
 .form-btn {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007acc;
+    padding: 1rem 2rem;
+    background: var(--primary);
     color: white;
-    border-radius: 6px;
-    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s;
 }
 
-.form-btn:hover {
-    background-color: #005fa3;
-}
+.form-btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
 .preview-box.scrollable {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 180px;
-    max-height: 250px;
-    overflow-y: auto;
+    background: transparent;
+    padding: 1rem;
+    border-radius: 12px;
+    min-height: 200px;
+    border: 1px dashed var(--primary);
     white-space: pre-wrap;
     word-wrap: break-word;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
 }
 
-.preview-box h3 {
-    color: #222;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.preview-box p {
-    color: #555;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-/*=============== dark mode ================= */
-
-body.dark-mode {
-    background: #111827;
-    color: #e5e7eb;
-}
-
-body.dark-mode .post-container {
-    background: #1e293b;
-    border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode .post-heading {
-    color: #f9fafb;
-}
-
-body.dark-mode .post-input-section h2,
-body.dark-mode .post-preview-section h2 {
-    color: #3b82f6;
-}
-
-body.dark-mode input[type="text"],
-body.dark-mode textarea {
-    background-color: #1f2937;
-    border: 1px solid #334155;
-    color: #f1f5f9;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body.dark-mode input[type="text"]::placeholder,
-body.dark-mode textarea::placeholder {
-    color: #94a3b8;
-}
-
-body.dark-mode input[type="text"]:focus,
-body.dark-mode textarea:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-    background-color: #1f2937;
-}
-
-body.dark-mode .form-btn {
-    background-color: #3b82f6;
-    color: white;
-}
-
-body.dark-mode .form-btn:hover {
-    background-color: #2563eb;
-}
-
-body.dark-mode .preview-box.scrollable {
-    background-color: #0f172a;
-    color: #e2e8f0;
-    border: 1px solid #334155;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode .preview-box h3 {
-    color: #f3f4f6;
-}
-
-body.dark-mode .preview-box p {
-    color: #cbd5e1;
-}
+.preview-box h3 { color: var(--text-light); }
+body.dark-mode .preview-box h3 { color: var(--text-dark); }
+.preview-box p { color: #6B7280; }
+body.dark-mode .preview-box p { color: #9CA3AF; }
