@@ -3,33 +3,32 @@
   max-width: 1040px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  animation: fadeIn 0.6s ease-out;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Hero */
 .simple-hero {
   text-align: center;
   padding: 8rem 0 6rem;
+  position: relative;
 }
 
 .hero-title {
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 800;
-  color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.05;
-  letter-spacing: -0.05em;
-}
-body.dark-mode .hero-title {
-  background: linear-gradient(to right, #FFF, #888);
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #FFFFFF, #93C5FD);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(147, 197, 253, 0.2));
 }
 
 .hero-subtitle {
   font-size: 1.35rem;
   color: var(--text-secondary);
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -39,89 +38,115 @@ body.dark-mode .hero-title {
 .auth-buttons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .auth-btn {
-  padding: 0.8rem 2rem;
+  padding: 1rem 2.8rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.2s;
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: -0.01em;
 }
 
 .login-btn {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-primary);
   border: 1px solid var(--border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
 }
-.login-btn:hover { background: var(--surface-hover); border-color: var(--border-hover); }
+.login-btn:hover { 
+  background: rgba(255, 255, 255, 0.08); 
+  border-color: var(--text-secondary); 
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
 
 .signup-btn {
   background: var(--accent);
   color: var(--accent-text);
   border: 1px solid var(--accent);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
 }
-.signup-btn:hover { background: var(--accent-hover); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.signup-btn:hover { 
+  background: var(--accent-hover); 
+  box-shadow: var(--accent-glow); 
+  transform: translateY(-3px); 
+}
 
 /* Feature Sections */
 .info-section.minimal, .how-it-works, .testimonials-section, .trending-section {
-  padding: 5rem 0;
+  padding: 6rem 0;
   border-top: 1px solid var(--border);
 }
 
 .info-section h2, .how-it-works h2, .testimonials-section h2, .trending-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
   text-align: center;
   letter-spacing: -0.03em;
+  color: var(--text-primary);
 }
 
 .steps-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 2.5rem;
 }
 
 .step {
-  padding: 2rem;
+  padding: 2.5rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   background: var(--surface);
-  transition: border-color 0.2s;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
 }
-.step:hover { border-color: var(--border-hover); }
-.step h4 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-primary); }
-.step p { color: var(--text-secondary); line-height: 1.6; }
+.step:hover { 
+  border-color: var(--accent); 
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
+}
+.step h4 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--text-primary); }
+.step p { color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem; }
 
 /* Testimonials */
 .testimonial-card {
-  max-width: 700px; margin: 0 auto;
-  padding: 3rem; border: 1px solid var(--border);
-  border-radius: var(--radius-md); background: var(--surface);
+  max-width: 800px; margin: 0 auto;
+  padding: 4rem; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); 
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(15, 23, 42, 0.4) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   text-align: center;
+  box-shadow: var(--shadow-md);
 }
-.testimonial-card p { font-size: 1.25rem; font-style: italic; color: var(--text-secondary); line-height: 1.6; }
-.testimonial-card span { display: block; margin-top: 1.5rem; font-weight: 600; color: var(--text-primary); font-style: normal; }
+.testimonial-card p { font-size: 1.4rem; font-style: italic; color: var(--text-secondary); line-height: 1.8; }
+.testimonial-card span { display: block; margin-top: 2rem; font-weight: 600; color: var(--text-primary); font-size: 1.1rem; }
 
 /* CTA Footer */
 .cta-footer {
-  text-align: center; padding: 6rem 0; border-top: 1px solid var(--border);
+  text-align: center; padding: 7rem 0; border-top: 1px solid var(--border);
 }
-.cta-footer h2 { font-size: 3rem; margin-bottom: 2rem; }
+.cta-footer h2 { font-size: 3.5rem; margin-bottom: 2.5rem; letter-spacing: -0.04em; }
 .cta-button {
-  display: inline-block; padding: 1rem 3rem;
+  display: inline-block; padding: 1.2rem 3.5rem;
   background: var(--accent); color: var(--accent-text);
-  border-radius: var(--radius-sm); font-weight: 600; font-size: 1.1rem;
-  transition: all 0.2s; box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm); font-weight: 600; font-size: 1.15rem;
+  transition: all 0.3s; box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
 }
-.cta-button:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.cta-button:hover { 
+  background: var(--accent-hover); 
+  transform: translateY(-4px); 
+  box-shadow: var(--accent-glow); 
+}
 
 @media (max-width: 768px) {
-  .hero-title { font-size: 3rem; }
+  .hero-title { font-size: 3.5rem; }
   .simple-hero { padding: 4rem 0; }
-  .auth-buttons { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+  .auth-buttons { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
 }

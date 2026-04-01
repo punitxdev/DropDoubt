@@ -1,10 +1,13 @@
 /* ═══════ NAVBAR ═══════ */
 .navbarContainer {
-  background: var(--bg);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .navbarContent {
@@ -13,54 +16,48 @@
   align-items: center;
   max-width: 1040px;
   margin: 0 auto;
-  height: 60px;
+  height: 64px;
   padding: 0 1.5rem;
 }
 
 .navLogoLarge {
-  height: 24px;
-  /* Making logo blend smoothly */
-  filter: contrast(1.2);
+  height: 28px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
-body.dark-mode .navLogoLarge { filter: invert(1); }
+
+.navLogoLarge:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
 
 .navListWrapper {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   list-style: none;
   align-items: center;
 }
 
 .navLink {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
-  transition: color 0.2s;
+  transition: color 0.2s, text-shadow 0.2s;
   position: relative;
 }
 
 .navLink:hover {
   color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
 .navLink.active {
   color: var(--text-primary);
   font-weight: 600;
+  text-shadow: 0 0 12px rgba(255,255,255,0.6);
 }
 
-/* Toggle Switch (Vercel style button) */
-.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider {
-  position: absolute; cursor: pointer; inset: 0;
-  background: var(--border); border-radius: 20px; transition: 0.2s;
-}
-.slider::before {
-  content: ""; position: absolute; height: 16px; width: 16px; left: 2px; bottom: 2px;
-  background: var(--bg); border-radius: 50%; border: 1px solid var(--border); transition: 0.2s;
-}
-.switch input:checked + .slider { background: var(--accent); }
-.switch input:checked + .slider::before { transform: translateX(20px); border-color: var(--accent); }
+/* Toggle Switch Removed, replacing with pure awesome links */
 
 /* Mobile Menu */
 .nav-toggle { display: none; }
@@ -70,9 +67,11 @@ body.dark-mode .navLogoLarge { filter: invert(1); }
   .hamburger { display: block; }
   .navListWrapper {
     display: none; flex-direction: column; width: 100%;
-    position: absolute; top: 60px; left: 0; padding: 1.5rem;
-    background: var(--bg); border-bottom: 1px solid var(--border);
+    position: absolute; top: 64px; left: 0; padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--border);
   }
-  .nav-toggle:checked ~ .navListWrapper { display: flex; gap: 1rem; }
-  .navLink { width: 100%; text-align: left; padding: 0.5rem 0; font-size: 1rem; border-bottom: 1px solid var(--border); }
+  .nav-toggle:checked ~ .navListWrapper { display: flex; gap: 1.5rem; }
+  .navLink { width: 100%; text-align: left; padding: 0.5rem 0; font-size: 1.1rem; border-bottom: 1px solid var(--border); }
 }

@@ -1,32 +1,28 @@
-/* === Light Theme === */
 .ques-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    width: 300px;
-    transition: transform 0.2s;
+    background: var(--surface);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    width: 320px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
+    color: var(--text-primary);
 }
 
 .ques-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--accent);
 }
 
 .ques-meta {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
-    color: #666;
-}
-
-/* === Dark Mode === */
-body.dark-mode .ques-card {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode .ques-meta {
-    color: #aaa;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
 }
