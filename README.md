@@ -1,8 +1,8 @@
 <div align="center">
 
-# ❓ DropDoubt
+# DropDoubt
 
-### _Drop your doubts, get answers, help others_
+### Centralized platform for academic inquiries and knowledge sharing.
 
 <br>
 
@@ -14,7 +14,7 @@
 
 <br>
 
-A full-stack **Q&A platform** for students — ask questions, write rich-text answers, upvote the best responses, browse user profiles, and build a community of knowledge sharing. Built with the **MERN** stack featuring smooth Framer Motion animations and a premium glassmorphism UI.
+A full-stack **Q&A platform** built for collaborative environments. The system enables users to submit detailed inquiries, construct formatted technical responses, evaluate submissions through voting mechanics, and browse profile directories. Developed on the **MERN** stack leveraging optimized data storage and secure routing architectures.
 
 <br>
 
@@ -24,28 +24,27 @@ A full-stack **Q&A platform** for students — ask questions, write rich-text an
 
 <br>
 
-## 🎯 Core Features
+## Core Features
 
 <table>
 <tr>
 <td width="50%">
 
-### 💬 Questions & Answers
-- **Post questions** with detailed descriptions
-- **Rich text editor** (React Quill) for formatted answers
-- **Upvote/downvote** system to surface best answers
-- **Threaded answers** — multiple responses per question
-- **Browse all posts** in a clean question feed
+### Inquiries & Structured Answers
+- **Query Posting**: Submit questions alongside descriptive contextual breakdowns.
+- **Rich Text Integration**: Leverages React Quill facilitating code blocks, bold strings, and formatted answers.
+- **Evaluation Engine**: Upvote and downvote systems filtering the most optimal technical responses automatically.
+- **Threaded Architecture**: Multiple independent response threads attached sequentially per question.
+- **Aggregated Feeds**: Clean interface browsing all submitted active platform queries.
 
 </td>
 <td width="50%">
 
-### 👤 Users & Profiles
-- **Sign up / Login** with secure bcrypt authentication
-- **User profiles** with avatar uploads (Multer)
-- **People directory** — discover other users
-- **About page** — learn about the platform
-- **Persistent sessions** with cookie-based auth
+### User Authentication & Profiles
+- **Encrypted Entry**: Sign up and login pathways fortified via strict bcrypt authentication algorithms.
+- **Profile Configuration**: Individual user mapping encompassing Multer-based image integration.
+- **Global Directory**: Browse an aggregated list mapping active system users.
+- **Persistent Operations**: Continual session maintenance utilizing structured cookie authorization.
 
 </td>
 </tr>
@@ -53,31 +52,29 @@ A full-stack **Q&A platform** for students — ask questions, write rich-text an
 
 <br>
 
-## ✨ Highlights
+## Operational Highlights
 
-- 🎬 **Smooth Animations** — Framer Motion transitions across pages and components
-- 🎨 **Premium UI** — Modern dark glassmorphism design with custom CSS
-- 📝 **Rich Text Editor** — Format answers with bold, italics, code blocks, and more
-- 📸 **Profile Pictures** — Upload and display custom avatars
-- 🔐 **Secure Auth** — Passwords hashed with bcrypt
-- 📱 **Responsive** — Works on desktop, tablet, and mobile
+- **Dynamic Navigation Transitions**: Framer Motion implementations maintaining fluid page mappings.
+- **Modern Interface Execution**: Responsive custom CSS structuring focusing on minimal overlapping components.
+- **Secure Handling**: Complete password hashing resolving directly to backend nodes via bcrypt.
+- **Responsive Architecture**: Interfaces scale and adjust appropriately spanning desktop and mobile viewports.
 
 <br>
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
-- **Node.js** (v16+)
-- **MongoDB** running locally or a cloud URI
+- **Node.js** (v16+ required for optimal module parsing)
+- **MongoDB** (Executing local instance or valid cloud URI string)
 
-### 1. Clone
+### 1. Repository Configuration
 
 ```bash
 git clone https://github.com/punitxdev/DropDoubt.git
 cd DropDoubt
 ```
 
-### 2. Start Backend
+### 2. Initialize Backend Operations
 
 ```bash
 cd Backend
@@ -85,77 +82,75 @@ npm install
 node doubtDrop\(Backend\)/server.js
 ```
 
-### 3. Start Frontend
+### 3. Initialize Frontend Assembly
 
 ```bash
-# In a new terminal, from project root
+# Execute within a secondary terminal context relative to root:
 cd Frontend
 npm install
 npm start
 ```
 
-> Frontend runs on **http://localhost:3000** • Backend API on **http://localhost:5000**
+> **Frontend Deployment:** http://localhost:3000 • **Backend API Binding:** http://localhost:5000
 
 <br>
 
-## 📁 Project Structure
+## Project Structure
 
-```
-📦 DropDoubt
- ┣ 📂 Frontend/                      → React App (CRA)
- ┃  ┗ 📂 src/
- ┃     ┣ 📄 App.js                   → Router & page layout
- ┃     ┗ 📂 frontend/
- ┃        ┣ 📂 JS/
- ┃        ┃  ┣ 🏠 Home/              → Landing & question feed
- ┃        ┃  ┣ 📝 Post/              → Question posting & editor
- ┃        ┃  ┣ 💬 Answers/           → Answer threads per question
- ┃        ┃  ┣ 👤 Profile/           → User profile pages
- ┃        ┃  ┣ 👥 People/            → User directory
- ┃        ┃  ┣ 🔐 Authentication/    → Login & Sign Up
- ┃        ┃  ┣ 🧭 Navbar             → Navigation bar
- ┃        ┃  ┗ 📌 Footer             → Site footer
- ┃        ┣ 📂 css/                  → Component stylesheets
- ┃        ┣ 📂 Contexts/             → React Context providers
- ┃        ┗ 📂 pics/                 → Static images
- ┃
- ┗ 📂 Backend/
-    ┗ 📂 doubtDrop(Backend)/
-       ┣ 🗄️ server.js               → Express server entry
-       ┣ 🔌 db.js                    → MongoDB connection
-       ┣ 📂 models/                  → User, Question, Answer schemas
-       ┣ 📂 routes/                  → user, question, answer API routes
-       ┗ 📂 profilePicUploads/       → Uploaded avatar storage
+```text
+DropDoubt
+ ├── Frontend/                      → React SPA Implementation (CRA)
+ │  └── src/
+ │     ├── App.js                   → Router integration and layout definitions
+ │     └── frontend/
+ │        ├── JS/
+ │        │  ├── Home/              → Landing index and query feed
+ │        │  ├── Post/              → Query submission block and editor implementation
+ │        │  ├── Answers/           → Threaded operational response sequences
+ │        │  ├── Profile/           → User-specific structural properties
+ │        │  ├── People/            → Global directory arrays
+ │        │  ├── Authentication/    → Security and authorization pathways
+ │        │  ├── Navbar             → Primary directional framework
+ │        │  └── Footer             → Persistent presentation footer
+ │        ├── css/                  → Component-based scoped layouts
+ │        ├── Contexts/             → Global React Context parameter definitions
+ │        └── pics/                 → Defined static assets
+ │
+ └── Backend/
+    └── doubtDrop(Backend)/
+       ├── server.js               → Primary Express runtime entry node
+       ├── db.js                    → External Mongoose database initialization
+       ├── models/                  → Pre-mapped structural schemas (User, Question, Answer)
+       ├── routes/                  → Network routing logic nodes (User API, queries)
+       └── profilePicUploads/       → Designated Multer write target for avatar arrays
 ```
 
 <br>
 
-## 🛠️ Built With
+## Built With
 
-| Layer | Tech | Purpose |
+| Layer | Technology | Purpose |
 |---|---|---|
-| **Frontend** | React 18 (CRA) | Component-based UI |
-| **Routing** | React Router v7 | Client-side navigation |
-| **Animations** | Framer Motion | Smooth page transitions |
-| **Icons** | React Icons | Icon library |
-| **Rich Text** | React Quill | Formatted answer editor |
-| **Backend** | Node.js + Express 5 | REST API server |
-| **Database** | MongoDB + Mongoose | Document storage |
-| **Auth** | bcrypt / bcryptjs | Password hashing |
-| **Uploads** | Multer | Profile picture handling |
+| **Frontend** | React 18 (CRA) | Component-centric UI rendering logic |
+| **Routing** | React Router v7 | Structured client-side navigational pathing |
+| **Animations** | Framer Motion | Smooth transitional component implementations |
+| **Icons** | React Icons | Icon library component representations |
+| **Rich Text** | React Quill | Formatted editor parsing properties |
+| **Backend** | Node.js + Express 5 | Scalable REST API gateway routing |
+| **Database** | MongoDB + Mongoose | Active document-oriented NoSQL storage |
+| **Security** | bcrypt / bcryptjs | Cryptographic hashing mapping representations |
+| **Uploads** | Multer | File processing mapping structure |
 
 <br>
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, issues, and feature requests are welcome!
+Structural revisions expanding queries architectures and general platform additions are highly encouraged.
 
 ```bash
-# Fork → Branch → Commit → Push → PR
 git checkout -b feature/search-questions
-git commit -m "Add question search functionality"
+git commit -m "Initialize structural question search functions"
 git push origin feature/search-questions
 ```
 
 <br>
-
