@@ -159,18 +159,3 @@ git push origin feature/search-questions
 
 <br>
 
-## 📄 License
-
-Open source under the [MIT License](LICENSE).
-
-<br>
-
-<div align="center">
-
----
-
-**Made with ❤️ by [punitxdev](https://github.com/punitxdev)**
-
-_If you found this useful, give it a ⭐!_
-
-</div>
